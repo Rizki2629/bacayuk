@@ -1,106 +1,14 @@
 <?= $this->extend('layout/main')?>
 <?= $this->section('content')?>
+<div class="flex flex-wrap items-end justify-between gap-4 mb-7"><div><p class="text-sm font-semibold text-primary mb-2">Selamat datang kembali 👋</p><h1 class="font-display font-extrabold text-3xl sm:text-[2.6rem] tracking-tight">Halo, <?= esc(session()->get('nama'))?>!</h1><p class="text-muted mt-2 text-base">Siap melanjutkan petualangan membaca hari ini?</p></div><a href="<?= base_url('siswa/jurnal/baru')?>" class="btn bg-primary hover:bg-primary-dark text-white border-0 rounded-2xl px-5 normal-case font-display font-bold shadow-lg shadow-primary/20">+ Catat bacaan</a></div>
 
-<div class="relative overflow-hidden rounded-xl bg-bacayuk text-white p-6 sm:p-8 shadow-kartu">
-  <div class="relative z-10 sm:max-w-[68%]">
-    <h1 class="font-display font-extrabold text-3xl sm:text-4xl">Halo, <?= esc(session()->get('nama'))?></h1>
-    <p class="text-white/85 font-semibold mt-1">Sudah membaca apa hari ini? Catat bacaanmu di jurnal. </p>
-    <a href="<?= base_url('siswa/jurnal/baru')?>" class="btn bg-mustard hover:bg-[#D97706] text-ink border-0 rounded-xl font-display text-lg mt-4 shadow"> Isi Jurnal Hari Ini</a>
-  </div>
-  <img src="<?= base_url('assets/ilustrasi/book-lover.svg')?>" alt="" class="absolute right-3 -bottom-3 h-40 lg:h-48 hidden sm:block pointer-events-none select-none">
-</div>
+<div class="relative overflow-hidden rounded-[28px] bg-primary text-white p-6 sm:p-8 shadow-float mb-6"><div class="absolute -right-10 -top-16 w-60 h-60 rounded-full border-[30px] border-white/10"></div><div class="absolute right-24 -bottom-24 w-44 h-44 rounded-full border-[20px] border-white/10"></div><div class="relative z-10 sm:max-w-[62%]"><div class="flex items-center gap-2 text-white/70 text-sm font-semibold mb-3"><span class="w-2 h-2 bg-[#FFC857] rounded-full"></span> Misi membaca minggu ini</div><h2 class="font-display font-extrabold text-2xl sm:text-3xl leading-tight">Sedikit demi sedikit,<br>jadi kebiasaan hebat.</h2><p class="text-white/75 mt-3 text-sm leading-relaxed">Kamu sudah membaca <?= number_format($stats['total_menit'])?> menit. Yuk, tambah satu cerita lagi!</p><div class="mt-5 flex items-center gap-4"><a href="<?= base_url('siswa/jurnal/baru')?>" class="btn bg-white text-primary hover:bg-white/90 border-0 rounded-xl normal-case font-bold">Mulai membaca</a><span class="text-white/70 text-sm font-semibold">🔥 <?= number_format($stats['streak'])?> hari streak</span></div></div><img src="<?= base_url('assets/ilustrasi/book-lover.svg')?>" alt="" class="absolute right-7 bottom-0 h-40 sm:h-48 hidden sm:block drop-shadow-xl"></div>
 
-<!-- Kartu statistik (pola Courseflow) -->
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-  <?php
-  $kartu = [
-      ['<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.8-1.6-4-2-8-2v14c4 0 6.2.4 8 2 1.8-1.6 4-2 8-2V4c-4 0-6.2.4-8 2Z"/><path d="M12 6v14"/></svg>', $stats['total_buku'], 'Buku Dibaca', 'bg-pinky/15 text-pinky'],
-      ['<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>', $stats['total_halaman'], 'Total Halaman', 'bg-skyy/15 text-skyy'],
-      ['<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>', $stats['total_menit'], 'Menit Membaca', 'bg-minty/15 text-minty'],
-      ['<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>', $stats['streak'], 'Hari Beruntun', 'bg-mustard/25 text-[#9c7300]'],
-  ];
-  foreach ($kartu as [$ikon, $nilai, $label, $kelas]):?>
-  <div class="card bg-white rounded-xl shadow-kartu">
-    <div class="card-body p-5">
-      <span class="w-11 h-11 rounded-xl grid place-items-center text-2xl <?= $kelas?>"><?= $ikon?></span>
-      <p class="font-display font-extrabold text-3xl mt-2"><?= number_format($nilai)?></p>
-      <p class="font-bold text-slate-500 text-sm"><?= $label?></p>
-    </div>
-  </div>
-  <?php endforeach;?>
-</div>
+<div class="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-6"><?php $kartu=[['📚',$stats['total_buku'],'Buku dibaca','bg-[#FFF0F5] text-[#D75C83]'],['📖',$stats['total_halaman'],'Total halaman','bg-[#EEF3FF] text-[#5B79D5]'],['⏱',$stats['total_menit'],'Menit membaca','bg-mint text-[#2E927D]'],['🔥',$stats['streak'],'Hari beruntun','bg-[#FFF4D9] text-[#C18A18]']];foreach($kartu as [$ikon,$nilai,$label,$kelas]):?><div class="bg-white rounded-[22px] p-5 shadow-soft border border-[#F2EEF8]"><div class="flex items-start justify-between"><span class="w-11 h-11 rounded-2xl grid place-items-center text-xl <?= $kelas?>"><?= $ikon?></span><span class="text-[#C3BECF]">↗</span></div><p class="font-display font-extrabold text-2xl mt-4"><?= number_format($nilai)?></p><p class="font-semibold text-sm text-muted mt-1"><?= $label?></p></div><?php endforeach;?></div>
 
-<div class="grid lg:grid-cols-5 gap-4 mt-4">
-  <!-- Grafik -->
-  <div class="card bg-white rounded-xl shadow-kartu lg:col-span-3">
-    <div class="card-body p-5">
-      <h2 class="font-display font-bold text-xl"> Membacaku 7 Hari Terakhir</h2>
-      <div class="h-56"><canvas id="grafikBaca"></canvas></div>
-    </div>
-  </div>
-  <!-- Lencana terbaru -->
-  <div class="card bg-white rounded-xl shadow-kartu lg:col-span-2">
-    <div class="card-body p-5">
-      <h2 class="font-display font-bold text-xl"> Lencana Terbaruku</h2>
-      <?php if ($lencana === []):?>
-        <p class="text-slate-500 font-semibold">Belum ada lencana. Isi jurnal pertamamu untuk meraih Langkah Pertama!</p>
-      <?php else:?>
-        <div class="flex flex-wrap gap-3">
-          <?php foreach (array_slice($lencana, -6) as $l):?>
-            <div class="tooltip" data-tip="<?= esc($l['nama'])?>">
-              <span class="w-14 h-14 rounded-full bg-mustard/30 border-2 border-mustard grid place-items-center text-3xl"><?= esc($l['ikon'])?></span>
-            </div>
-          <?php endforeach;?>
-        </div>
-      <?php endif;?>
-      <a href="<?= base_url('siswa/lencana')?>" class="btn btn-ghost rounded-xl font-display text-bacayuk mt-2">Lihat semua lencana →</a>
-    </div>
-  </div>
-</div>
+<div class="grid xl:grid-cols-5 gap-5"><div class="bg-white rounded-[24px] shadow-soft border border-[#F2EEF8] xl:col-span-3 p-5 sm:p-6"><div class="flex items-center justify-between mb-5"><div><h2 class="font-display font-bold text-lg">Aktivitas membaca</h2><p class="text-muted text-sm mt-1">7 hari terakhir</p></div><span class="rounded-full bg-lilac text-primary px-3 py-1.5 text-xs font-bold">Menit</span></div><div class="h-56"><canvas id="grafikBaca"></canvas></div></div>
+<div class="bg-white rounded-[24px] shadow-soft border border-[#F2EEF8] xl:col-span-2 p-5 sm:p-6"><div class="flex items-center justify-between mb-5"><div><h2 class="font-display font-bold text-lg">Lencana terbaru</h2><p class="text-muted text-sm mt-1">Koleksi pencapaianmu</p></div><a href="<?= base_url('siswa/lencana')?>" class="text-primary text-sm font-bold">Lihat semua</a></div><?php if($lencana===[]):?><div class="bg-cream rounded-2xl p-5 text-center"><div class="text-4xl mb-2">🏅</div><p class="font-bold text-sm">Lencana pertamamu menunggu!</p><p class="text-muted text-xs mt-1">Isi jurnal untuk mulai mengoleksi.</p></div><?php else:?><div class="flex flex-wrap gap-4"><?php foreach(array_slice($lencana,-6) as $l):?><div class="text-center"><span class="w-14 h-14 rounded-2xl bg-[#FFF2CF] border border-[#FFE29A] grid place-items-center text-3xl"><?= esc($l['ikon'])?></span><p class="text-[11px] font-bold text-muted mt-2 max-w-[64px] truncate"><?= esc($l['nama'])?></p></div><?php endforeach;?></div><?php endif;?></div></div>
 
-<!-- Lanjutkan Membaca -->
-<div class="card bg-white rounded-xl shadow-kartu mt-4">
-  <div class="card-body p-5">
-    <h2 class="font-display font-bold text-xl"> Jurnal Terakhirku</h2>
-    <?php if ($lanjut === []):?>
-      <p class="text-slate-500 font-semibold">Belum ada jurnal. Mulai petualangan membacamu sekarang!</p>
-    <?php else:?>
-      <div class="divide-y">
-      <?php foreach ($lanjut as $j):?>
-        <div class="py-3 flex items-center gap-4">
-          <span class="w-12 h-14 rounded-xl grid place-items-center text-2xl text-white font-display font-bold shrink-0" style="background:#2563EB"><?= esc($j['perasaan']?: '📚')?></span>
-          <div class="flex-1 min-w-0">
-            <p class="font-display font-bold truncate"><?= esc($j['judul_buku'])?></p>
-            <p class="text-sm text-slate-500 font-semibold"><?= date('d M Y', strtotime($j['tanggal']))?> • hal. <?= (int) $j['halaman_dari']?>–<?= (int) $j['halaman_sampai']?> • <?= (int) $j['durasi_menit']?> menit</p>
-            <?php if (! empty($j['total_halaman_buku'])):?>
-              <progress class="progress progress-warning w-full max-w-xs" value="<?= (int) $j['halaman_sampai']?>" max="<?= (int) $j['total_halaman_buku']?>"></progress>
-            <?php endif;?>
-          </div>
-          <?php
-            $badge = ['menunggu' => 'badge-warning', 'terverifikasi' => 'badge-success', 'revisi' => 'badge-error'][$j['status']];
-?>
-          <span class="badge <?= $badge?> font-bold text-white border-0"><?= esc($j['status'])?></span>
-        </div>
-      <?php endforeach;?>
-      </div>
-    <?php endif;?>
-  </div>
-</div>
-
+<div class="bg-white rounded-[24px] shadow-soft border border-[#F2EEF8] mt-5 p-5 sm:p-6"><div class="flex items-center justify-between mb-2"><div><h2 class="font-display font-bold text-lg">Jurnal terakhir</h2><p class="text-muted text-sm mt-1">Perjalanan bacaanmu</p></div><a href="<?= base_url('siswa/jurnal')?>" class="text-primary text-sm font-bold">Lihat semua →</a></div><?php if($lanjut===[]):?><div class="py-9 text-center"><p class="text-4xl">🌱</p><p class="font-display font-bold mt-3">Cerita pertamamu dimulai di sini</p><p class="text-muted text-sm mt-1">Catat bacaanmu dan lihat progresnya tumbuh.</p></div><?php else:?><div class="divide-y divide-[#F3F0F7]"><?php foreach($lanjut as $j):?><div class="py-4 flex items-center gap-4"><span class="w-12 h-14 rounded-2xl bg-gradient-to-br from-[#8C7AF4] to-primary grid place-items-center text-2xl text-white shrink-0"><?= esc($j['perasaan']?:'📚')?></span><div class="flex-1 min-w-0"><p class="font-display font-bold truncate"><?= esc($j['judul_buku'])?></p><p class="text-sm text-muted mt-1"><?= date('d M Y',strtotime($j['tanggal']))?> · <?= (int)$j['jumlah_halaman']?> halaman · <?= (int)$j['durasi_menit']?> menit</p></div><?php $badge=['menunggu'=>'bg-[#FFF1D7] text-[#A36C17]','terverifikasi'=>'bg-mint text-[#2A816F]','revisi'=>'bg-[#FFE7EC] text-[#A23C56]'][$j['status']];?><span class="rounded-full px-3 py-1 text-xs font-bold <?= $badge?> hidden sm:inline-flex"><?= esc($j['status'])?></span></div><?php endforeach;?></div><?php endif;?></div>
 <?= $this->endSection()?>
-
-<?= $this->section('scripts')?>
-<script>
-new Chart(document.getElementById('grafikBaca'), {
-  type: 'bar',
-  data: {
-    labels: <?= json_encode($grafik['labels'])?>,
-    datasets: [{ label: 'Menit membaca', data: <?= json_encode($grafik['menit'])?>,
-      backgroundColor: '#2563EB', borderRadius: 12, maxBarThickness: 42 }]
-  },
-  options: { responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { display: false } },
-    scales: { y: { beginAtZero: true, grid: { color: '#E8EFFD' } }, x: { grid: { display: false } } } }
-});
-</script>
-<?= $this->endSection()?>
+<?= $this->section('scripts')?><script>new Chart(document.getElementById('grafikBaca'),{type:'bar',data:{labels:<?= json_encode($grafik['labels'])?>,datasets:[{data:<?= json_encode($grafik['menit'])?>,backgroundColor:'#D9D2FF',hoverBackgroundColor:'#6956E8',borderRadius:8,maxBarThickness:34}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{displayColors:false,backgroundColor:'#29253D',padding:10,cornerRadius:10}},scales:{y:{beginAtZero:true,grid:{color:'#F2EFF8'},border:{display:false},ticks:{color:'#A7A2B5',font:{family:'DM Sans'}}},x:{grid:{display:false},border:{display:false},ticks:{color:'#A7A2B5',font:{family:'DM Sans',weight:'600'}}}}}});</script><?= $this->endSection()?>

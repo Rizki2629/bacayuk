@@ -3,152 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><?= esc($judul?? 'Dashboard')?> — BacaYuk</title>
+<title><?= esc($judul ?? 'Dashboard') ?> — BacaYuk</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="<?= base_url('assets/css/daisyui.min.css') ?>" rel="stylesheet" type="text/css">
+<script src="<?= base_url('assets/js/tailwind-play.js') ?>"></script>
+<script src="<?= base_url('assets/js/chart.umd.min.js') ?>"></script>
 <script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        bacayuk: { DEFAULT: '#2563EB', dark: '#1D4ED8', soft: '#E8EFFD' },
-        navy: '#173A5E',
-        mustard: '#D97706',
-        krem: '#F5F7FA',
-        ink: '#1F2A37',
-        pinky: '#C2516B',
-        minty: '#2F8F83',
-        skyy: '#5B84AE',
-      },
-      fontFamily: {
-        display: ['"Plus Jakarta Sans"', 'sans-serif'],
-        body: ['"Plus Jakarta Sans"', 'sans-serif'],
-      },
-      boxShadow: {
-        kartu: '0 1px 3px rgba(16,24,40,.08), 0 1px 2px rgba(16,24,40,.04)',
-      },
-    }
-  }
-}
+tailwind.config = { theme: { extend: {
+  colors: { primary:'#6956E8', 'primary-dark':'#5542D0', cream:'#FFF9F0', ink:'#29253D', muted:'#817D92', lilac:'#F1EEFF', peach:'#FFF0E8', mint:'#E7F7F2', gold:'#F5B942', bacayuk:'#6956E8', 'bacayuk-dark':'#5542D0', navy:'#29253D', krem:'#FFF9F0', skyy:'#5B84AE', minty:'#2E927D', pinky:'#D75C83', mustard:'#F5B942' },
+  fontFamily: { display:['"Plus Jakarta Sans"','sans-serif'], body:['"DM Sans"','sans-serif'] },
+  boxShadow: { soft:'0 10px 35px rgba(57,45,112,.07)', float:'0 20px 50px rgba(74,61,158,.15)' }
+} } };
 </script>
 <style>
-  body { font-family: 'Plus Jakarta Sans', sans-serif; background: #F5F7FA; color: #1F2A37; }
-.font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
-.menu a.active { background: rgba(255,255,255,.16); color: #fff; }
+:root{--primary:#6956E8;--ink:#29253D;--cream:#FFF9F0}
+*{box-sizing:border-box} body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink)}
+.font-display{font-family:'Plus Jakarta Sans',sans-serif}.nav-link{color:#77728A;transition:.2s}.nav-link:hover{background:#F1EEFF;color:var(--primary)}.nav-link.active{background:var(--primary);color:white;box-shadow:0 8px 18px rgba(105,86,232,.2)}
+.fade-in{animation:fadeIn .45s ease both}@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 <?php
-$role = session()->get('role');
-$ic = [
-  'home' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>',
-  'users' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3.5 20c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.6"/><path d="M16.5 15.2c2.3.3 3.6 1.9 4 4.3"/></svg>',
-  'kelas' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8.5L12 4l7 4.5V21"/><path d="M9.5 21v-4.5h5V21"/><path d="M12 8v2"/></svg>',
-  'buku' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.8-1.6-4-2-8-2v14c4 0 6.2.4 8 2 1.8-1.6 4-2 8-2V4c-4 0-6.2.4-8 2Z"/><path d="M12 6v14"/></svg>',
-  'jurnal'=> '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h13v18H6.5A2.5 2.5 0 0 1 4 18.5v-13A2.5 2.5 0 0 1 6 3Z"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H19"/><path d="M8.5 8h7M8.5 11.5h5"/></svg>',
-  'award' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5.5"/><path d="m8.8 13.5-1.6 7 4.8-2.6 4.8 2.6-1.6-7"/></svg>',
-  'check' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12.2 2.4 2.4 4.6-5"/></svg>',
-  'chart' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M8 16v-5M12 16V8M16 16v-8"/></svg>',
-  'out' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7"/><path d="M10 12h10"/><path d="m17 8 4 4-4 4"/></svg>',
-];
-$menu = match ($role) {
-    'admin' => [
-        ['/admin', 'home', 'Dashboard'],
-        ['/admin/users', 'users', 'Kelola User'],
-        ['/admin/kelas', 'kelas', 'Kelola Kelas'],
-        ['/buku', 'buku', 'Katalog Buku'],
-        ['/admin/jurnal', 'jurnal', 'Semua Jurnal'],
-        ['/admin/lencana', 'award', 'Lencana'],
-    ],
-    'guru' => [
-        ['/guru', 'home', 'Dashboard'],
-        ['/guru/verifikasi', 'check', 'Verifikasi Jurnal'],
-        ['/guru/jurnal', 'jurnal', 'Semua Jurnal'],
-        ['/guru/siswa', 'users', 'Siswa Kelas'],
-        ['/buku', 'buku', 'Katalog Buku'],
-        ['/guru/peringkat', 'chart', 'Peringkat Kelas'],
-    ],
-    default => [
-        ['/siswa', 'home', 'Dashboard'],
-        ['/siswa/jurnal', 'jurnal', 'Jurnal Saya'],
-        ['/siswa/buku', 'buku', 'Katalog Buku'],
-        ['/siswa/lencana', 'award', 'Lencana Saya'],
-        ['/siswa/peringkat', 'chart', 'Peringkat Kelas'],
-    ],
-};
-$uriNow = '/'. trim(uri_string(), '/');
-$namaUser = (string) (session()->get('nama')?? '');
-$inisial = strtoupper(mb_substr($namaUser!== ''? $namaUser: 'P', 0, 1));
+$role=session()->get('role');
+$ic=[
+'home'=>'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10.5 9-7.5 9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>',
+'users'=>'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3.5 20c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.6"/><path d="M16.5 15.2c2.3.3 3.6 1.9 4 4.3"/></svg>',
+'kelas'=>'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8.5L12 4l7 4.5V21M9.5 21v-4.5h5V21M12 8v2"/></svg>',
+'buku'=>'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.8-1.6-4-2-8-2v14c4 0 6.2.4 8 2 1.8-1.6 4-2 8-2V4c-4 0-6.2 4-8 2Z"/><path d="M12 6v14"/></svg>',
+'jurnal'=>'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h13v18H6.5A2.5 2.5 0 0 1 4 18.5v-13A2.5 2.5 0 0 1 6 3Z"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H19M8.5 8h7M8.5 11.5h5"/></svg>',
+'award'=>'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5.5"/><path d="m8.8 13.5-1.6 7 4.8-2.6 4.8 2.6-1.6-7"/></svg>',
+'chart'=>'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16M8 16v-5M12 16V8M16 16v-8"/></svg>',
+'out'=>'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7M10 12h10m-3-4 4 4-4 4"/></svg>'];
+$menu=match($role){
+'admin'=>[['/admin','home','Dashboard'],['/admin/users','users','Kelola User'],['/admin/kelas','kelas','Kelola Kelas'],['/buku','buku','Katalog Buku'],['/admin/jurnal','jurnal','Semua Jurnal'],['/admin/lencana','award','Lencana']],
+'guru'=>[['/guru','home','Dashboard'],['/guru/verifikasi','jurnal','Verifikasi Jurnal'],['/guru/jurnal','jurnal','Semua Jurnal'],['/guru/siswa','users','Siswa Kelas'],['/buku','buku','Katalog Buku'],['/guru/peringkat','chart','Peringkat Kelas']],
+default=>[['/siswa','home','Dashboard'],['/siswa/jurnal','jurnal','Jurnal Saya'],['/siswa/buku','buku','Katalog Buku'],['/siswa/lencana','award','Lencana Saya'],['/siswa/peringkat','chart','Peringkat Kelas']]};
+$uriNow='/'.trim(uri_string(),'/');$namaUser=(string)(session()->get('nama')??'');$inisial=strtoupper(mb_substr($namaUser!==''?$namaUser:'P',0,1));
 ?>
-<div class="drawer lg:drawer-open">
-  <input id="drawer-bacayuk" type="checkbox" class="drawer-toggle">
-  <div class="drawer-content flex flex-col min-h-screen">
-    <!-- Navbar atas (mobile) -->
-    <div class="navbar bg-white sticky top-0 z-30 shadow-sm lg:hidden">
-      <label for="drawer-bacayuk" class="btn btn-ghost btn-circle">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </label>
-      <span class="font-display font-bold text-lg text-navy">BacaYuk</span>
-    </div>
-
-    <main class="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 py-6">
-      <?php if (session()->getFlashdata('success')):?>
-        <div class="alert alert-success shadow-sm mb-5 rounded-xl font-medium"><span><?= esc(session()->getFlashdata('success'))?></span></div>
-      <?php endif;?>
-      <?php if (session()->getFlashdata('error')):?>
-        <div class="alert alert-error shadow-sm mb-5 rounded-xl font-medium"><span><?= esc(session()->getFlashdata('error'))?></span></div>
-      <?php endif;?>
-      <?php if (session()->getFlashdata('errors')):?>
-        <div class="alert alert-warning shadow-sm mb-5 rounded-xl">
-          <ul class="list-disc ml-5 font-medium">
-            <?php foreach ((array) session()->getFlashdata('errors') as $e):?><li><?= esc($e)?></li><?php endforeach;?>
-          </ul>
-        </div>
-      <?php endif;?>
-
-      <?= $this->renderSection('content')?>
-
-      <footer class="text-center text-xs text-slate-400 mt-10 mb-2">BacaYuk — Jurnal Membaca Anak</footer>
-    </main>
-  </div>
-
-  <!-- Sidebar -->
-  <div class="drawer-side z-40">
-    <label for="drawer-bacayuk" class="drawer-overlay"></label>
-    <aside class="w-72 min-h-full bg-navy text-white flex flex-col">
-      <div class="px-5 pt-6 pb-4">
-        <div class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-lg bg-white grid place-items-center text-bacayuk shrink-0">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.8-1.6-4-2-8-2v14c4 0 6.2.4 8 2 1.8-1.6 4-2 8-2V4c-4 0-6.2.4-8 2Z"/><path d="M12 6v14"/></svg>
-          </div>
-          <div>
-            <p class="font-display font-extrabold text-xl leading-tight">BacaYuk</p>
-            <p class="text-white/60 text-xs">Jurnal Membaca Anak</p>
-          </div>
-        </div>
-        <div class="mt-5 bg-white/10 rounded-xl p-3 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-bacayuk grid place-items-center font-display font-bold text-base shrink-0"><?= esc($inisial)?></div>
-          <div class="min-w-0">
-            <p class="font-semibold truncate text-sm"><?= esc($namaUser)?></p>
-            <span class="text-white/60 text-xs capitalize"><?= esc($role?? '')?></span>
-          </div>
-        </div>
-      </div>
-      <ul class="menu gap-1 px-3 flex-1 text-white [&_a]:text-white/85 [&_a:hover]:bg-white/10 [&_a:hover]:text-white">
-        <?php foreach ($menu as [$url, $ikon, $label]):?>
-          <li><a href="<?= base_url(ltrim($url, '/'))?>" class="<?= $uriNow === $url? 'active': ''?> rounded-lg font-medium gap-3"><span class="shrink-0 opacity-90"><?= $ic[$ikon]?></span><?= $label?></a></li>
-        <?php endforeach;?>
-      </ul>
-      <div class="p-4">
-        <a href="<?= base_url('logout')?>" class="btn btn-block bg-white/10 hover:bg-white/20 text-white border-0 rounded-lg font-semibold justify-start gap-3 normal-case"><span><?= $ic['out']?></span>Keluar</a>
-      </div>
-    </aside>
-  </div>
-</div>
-<?= $this->renderSection('scripts')?>
-</body>
-</html>
+<div class="drawer lg:drawer-open"><input id="drawer-bacayuk" type="checkbox" class="drawer-toggle"><div class="drawer-content min-h-screen">
+<header class="h-[74px] bg-white/80 backdrop-blur border-b border-[#EEEAF6] flex items-center justify-between px-5 sm:px-8 sticky top-0 z-30">
+<label for="drawer-bacayuk" class="btn btn-ghost btn-circle lg:hidden"><span class="text-xl">☰</span></label>
+<div class="hidden lg:block"><p class="text-xs text-muted font-semibold uppercase tracking-[.14em]">Ruang belajar</p><p class="font-display font-bold text-lg"><?= esc($judul??'Dashboard')?></p></div>
+<div class="flex items-center gap-3"><div class="hidden sm:block text-right"><p class="font-display font-bold text-sm"><?= esc($namaUser)?></p><p class="text-xs text-muted capitalize"><?= esc($role??'siswa')?></p></div><div class="w-10 h-10 rounded-2xl bg-primary text-white grid place-items-center font-display font-bold shadow-sm"><?= esc($inisial)?></div></div>
+</header>
+<main class="w-full max-w-[1380px] mx-auto px-5 sm:px-8 py-7 fade-in">
+<?php if(session()->getFlashdata('success')):?><div class="alert bg-mint border-0 text-[#247A68] shadow-sm mb-5 rounded-2xl font-semibold"><span>✓</span><span><?= esc(session()->getFlashdata('success'))?></span></div><?php endif;?>
+<?php if(session()->getFlashdata('error')):?><div class="alert bg-[#FFE7EC] border-0 text-[#A23C56] shadow-sm mb-5 rounded-2xl font-semibold"><span>!</span><span><?= esc(session()->getFlashdata('error'))?></span></div><?php endif;?>
+<?php if(session()->getFlashdata('errors')):?><div class="alert bg-[#FFF1D7] border-0 text-[#9A681B] shadow-sm mb-5 rounded-2xl"><ul class="list-disc ml-5 font-semibold"><?php foreach((array)session()->getFlashdata('errors') as $e):?><li><?= esc($e)?></li><?php endforeach;?></ul></div><?php endif;?>
+<?= $this->renderSection('content')?><footer class="text-center text-xs text-[#AAA5B8] mt-12 mb-2">BacaYuk · Tumbuhkan kebiasaan membaca setiap hari</footer>
+</main></div>
+<div class="drawer-side z-40"><label for="drawer-bacayuk" class="drawer-overlay"></label><aside class="w-[270px] min-h-full bg-white border-r border-[#EEEAF6] flex flex-col">
+<div class="px-6 pt-7 pb-6"><div class="flex items-center gap-3"><div class="w-11 h-11 rounded-2xl bg-primary text-white grid place-items-center shadow-lg shadow-primary/20"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.8-1.6-4-2-8-2v14c4 0 6.2.4 8 2 1.8-1.6 4-2-8-2V4c4 0 6.2 4 8 2Z"/><path d="M12 6v14"/></svg></div><div><p class="font-display font-extrabold text-xl tracking-tight">Baca<span class="text-primary">Yuk</span></p><p class="text-muted text-[11px] font-semibold">Jurnal membaca anak</p></div></div></div>
+<div class="px-4 mb-3"><p class="px-3 text-[10px] uppercase tracking-[.16em] font-bold text-[#B0AABD]">Menu utama</p></div><ul class="px-4 space-y-1 flex-1"><?php foreach($menu as [$url,$ikon,$label]):?><li><a href="<?= base_url(ltrim($url,'/'))?>" class="nav-link <?= $uriNow===$url?'active':''?> flex items-center gap-3 px-3 py-3 rounded-2xl font-semibold text-sm"><span class="shrink-0"><?= $ic[$ikon]?></span><?= $label?></a></li><?php endforeach;?></ul>
+<div class="p-4"><div class="bg-lilac rounded-2xl p-4 mb-3"><p class="font-display font-bold text-sm text-primary">Terus bertumbuh!</p><p class="text-xs text-[#817D92] mt-1 leading-relaxed">Satu halaman hari ini, satu langkah lebih hebat.</p></div><a href="<?= base_url('logout')?>" class="flex items-center gap-3 px-3 py-3 rounded-2xl text-sm font-semibold text-[#817D92] hover:bg-[#FFF0F2] hover:text-[#B64E68]"><?= $ic['out']?> Keluar</a></div>
+</aside></div></div><?= $this->renderSection('scripts')?></body></html>
