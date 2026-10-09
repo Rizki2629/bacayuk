@@ -3,7 +3,7 @@
 
 <div class="plakat flex items-center justify-between gap-4">
   <div>
-    <h1 class="font-kartun font-display font-extrabold text-3xl">Peringkat Kelas</h1>
+    <h1 class="font-kartun font-bold text-[28px] sm:text-[32px] leading-[1.15]">Peringkat Kelas</h1>
     <p class="text-muted font-semibold mt-1">Berdasarkan jurnal yang sudah terverifikasi.</p>
   </div>
   <img src="<?= base_url('assets/3d/maskot.jpg')?>" alt="" class="h-16 w-16 object-cover rounded-2xl hidden md:block shrink-0">

@@ -6,7 +6,7 @@
     <div class="absolute -right-8 -top-12 w-40 h-40 rounded-full bg-white/10"></div>
     <div class="relative z-10">
       <p class="text-white/75 text-[13px] font-semibold">Selamat datang kembali</p>
-      <h1 class="font-display font-extrabold text-[22px] leading-tight">Hai, <?= esc(session()->get('nama'))?>! 👋</h1>
+      <h1 class="font-display font-extrabold text-[24px] leading-tight">Hai, <?= esc(session()->get('nama'))?>! 👋</h1>
       <p class="text-white/75 text-[13px] mt-1">Pantau aktivitas membaca anak-anak kelasmu hari ini.</p>
       <div class="grid grid-cols-3 gap-2.5 mt-4">
         <div class="bg-white/12 rounded-2xl py-3 text-center"><p class="font-display font-extrabold text-lg leading-none"><?= (int) ($ringkas['siswa'] ?? 0)?></p><p class="text-[10px] font-bold text-white/75 mt-1.5">Siswa</p></div>
@@ -17,7 +17,7 @@
     </div>
   </div>
   <?php if (! empty($menunggu)):?>
-  <div class="flex items-center justify-between mt-6 mb-3"><h2 class="font-display font-extrabold text-[15px]">Antrean Verifikasi</h2><a href="<?= base_url('guru/verifikasi')?>" class="text-primary text-xs font-bold">Lihat Semua</a></div>
+  <div class="flex items-center justify-between mt-6 mb-3"><h2 class="font-display font-bold text-[17px]">Antrean Verifikasi</h2><a href="<?= base_url('guru/verifikasi')?>" class="text-primary text-xs font-bold">Lihat Semua</a></div>
   <div class="bg-white border border-[#F2EEF8] rounded-[22px] shadow-soft divide-y divide-[#F3F0F7] px-4">
     <?php foreach (array_slice($menunggu, 0, 3) as $j):?>
     <div class="py-3.5 flex items-center gap-3"><span class="text-[26px]"><?= esc($j['avatar'])?></span><div class="flex-1 min-w-0"><p class="font-display font-bold text-[13px] truncate"><?= esc($j['nama_siswa'])?> — <?= esc($j['judul_buku'])?></p><p class="text-[11px] text-muted mt-0.5"><?= date('d M Y', strtotime($j['tanggal']))?> · <?= (int) $j['durasi_menit']?> menit</p></div><a href="<?= base_url('guru/verifikasi')?>" class="flex-none rounded-full bg-[#FFF1D7] text-[#A36C17] px-3 py-1.5 text-[11px] font-bold">Periksa</a></div>
@@ -30,7 +30,7 @@
 
 <div class="flex items-center justify-between gap-4">
   <div>
-    <h1 class="font-display font-extrabold text-3xl">Halo, <?= esc(session()->get('nama'))?></h1>
+    <h1 class="font-display font-extrabold text-[28px] leading-tight">Halo, <?= esc(session()->get('nama'))?></h1>
     <p class="text-muted font-semibold mt-1">Pantau aktivitas membaca anak-anak kelasmu hari ini.</p>
   </div>
   <img src="<?= base_url('assets/ilustrasi/online-learning.svg')?>" alt="" class="h-24 hidden md:block shrink-0 bg-[#F1EEFF] rounded-xl p-2">
@@ -52,12 +52,12 @@
 
 <div class="grid lg:grid-cols-5 gap-4 mt-4">
   <div class="card bg-white rounded-[22px] shadow-kartu lg:col-span-3"><div class="card-body p-5">
-    <h2 class="font-display font-bold text-xl"> Menit Membaca Kelas (7 hari)</h2>
+    <h2 class="font-display font-bold text-[17px]"> Menit Membaca Kelas (7 hari)</h2>
     <div class="h-56"><canvas id="grafikKelas"></canvas></div>
   </div></div>
 
   <div class="card bg-white rounded-[22px] shadow-kartu lg:col-span-2"><div class="card-body p-5">
-    <h2 class="font-display font-bold text-xl"> Belum Membaca Minggu Ini</h2>
+    <h2 class="font-display font-bold text-[17px]"> Belum Membaca Minggu Ini</h2>
     <?php if ($belum === []):?>
       <p class="font-semibold text-muted">Semua anak sudah membaca minggu ini. Luar biasa! </p>
     <?php else:?>
@@ -72,7 +72,7 @@
 
 <div class="card bg-white rounded-[22px] shadow-kartu mt-4"><div class="card-body p-5">
   <div class="flex items-center justify-between">
-    <h2 class="font-display font-bold text-xl"> Jurnal Terbaru Menunggu Verifikasi</h2>
+    <h2 class="font-display font-bold text-[17px]"> Jurnal Terbaru Menunggu Verifikasi</h2>
     <a href="<?= base_url('guru/verifikasi')?>" class="btn btn-sm bg-bacayuk text-white border-0 rounded-xl font-display">Lihat semua →</a>
   </div>
   <?php if ($menunggu === []):?>

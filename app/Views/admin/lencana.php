@@ -1,7 +1,7 @@
 <?= $this->extend('layout/main')?>
 <?= $this->section('content')?>
 
-<h1 class="font-display font-extrabold text-3xl"> Definisi Lencana</h1>
+<h1 class="font-display font-extrabold text-[28px] leading-tight">Definisi Lencana</h1>
 <p class="text-muted font-semibold mt-1">Lencana diberikan otomatis saat syarat statistik siswa terpenuhi (dari jurnal terverifikasi).</p>
 
 <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-5">
@@ -10,7 +10,7 @@ $labelSyarat = ['total_jurnal' => 'jurnal', 'total_buku' => 'buku', 'total_halam
 foreach ($lencana as $l):?>
   <div class="card bg-white rounded-[22px] shadow-kartu"><div class="card-body items-center text-center p-5">
     <span class="w-16 h-16 rounded-full bg-mustard/30 border-2 border-mustard grid place-items-center text-4xl"><?= esc($l['ikon'])?></span>
-    <h3 class="font-display font-bold"><?= esc($l['nama'])?></h3>
+    <h3 class="font-display font-bold text-[15px]"><?= esc($l['nama'])?></h3>
     <p class="text-sm text-muted font-semibold"><?= esc($l['deskripsi'])?></p>
     <span class="badge bg-bacayuk-soft text-bacayuk border-0 font-bold">syarat: <?= (int) $l['syarat_nilai']?> <?= esc($labelSyarat[$l['syarat_tipe']]?? $l['syarat_tipe'])?></span>
   </div></div>

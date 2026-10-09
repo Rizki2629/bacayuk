@@ -2,7 +2,7 @@
 <?= $this->section('content')?>
 
 <div class="flex flex-wrap items-center justify-between gap-3">
-  <h1 class="font-display font-extrabold text-3xl"> Kelola Kelas</h1>
+  <h1 class="font-display font-extrabold text-[28px] leading-tight">Kelola Kelas</h1>
   <a href="<?= base_url('admin/kelas/baru')?>" class="btn bg-primary hover:bg-primary-dark text-white border-0 rounded-2xl font-display shadow-lg shadow-primary/20"> Tambah Kelas</a>
 </div>
 

@@ -2,7 +2,7 @@
 <?= $this->section('content')?>
 <?php $b = $buku; $aksi = $b? base_url('buku/update/'. $b['id']): base_url('buku');?>
 
-<h1 class="font-display font-extrabold text-3xl"><?= $b? ' Ubah Buku': ' Tambah Buku'?></h1>
+<h1 class="font-display font-extrabold text-[28px] leading-tight"><?= $b? ' Ubah Buku': ' Tambah Buku'?></h1>
 
 <form method="post" action="<?= $aksi?>" class="card bg-white rounded-[22px] shadow-kartu mt-5">
   <div class="card-body gap-5 p-6 sm:p-8">

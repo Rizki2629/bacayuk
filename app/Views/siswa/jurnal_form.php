@@ -2,7 +2,7 @@
 <?= $this->section('content')?>
 <?php $j = $jurnal; $aksi = $j? base_url('siswa/jurnal/update/'. $j['id']): base_url('siswa/jurnal');?>
 
-<h1 class="font-display font-extrabold text-3xl"><?= $j? ' Ubah Jurnal': ' Isi Jurnal Baru'?></h1>
+<h1 class="font-kartun font-bold text-[28px] sm:text-[32px] leading-[1.15]"><?= $j? ' Ubah Jurnal': ' Isi Jurnal Baru'?></h1>
 <p class="text-muted font-semibold mt-1">Ceritakan bacaanmu hari ini ya!</p>
 
 <form method="post" action="<?= $aksi?>" class="card bg-white rounded-[22px] shadow-kartu mt-5">

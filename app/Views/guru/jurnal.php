@@ -1,7 +1,7 @@
 <?= $this->extend('layout/main')?>
 <?= $this->section('content')?>
 
-<h1 class="font-display font-extrabold text-3xl"> <?= esc($judul)?></h1>
+<h1 class="font-display font-extrabold text-[28px] leading-tight"><?= esc($judul)?></h1>
 
 <div class="card bg-white rounded-[22px] shadow-kartu mt-5 overflow-hidden">
   <div class="overflow-x-auto">

@@ -1,7 +1,7 @@
 <?= $this->extend('layout/main')?>
 <?= $this->section('content')?>
 
-<h1 class="font-display font-extrabold text-3xl"> Siswa Kelas Saya</h1>
+<h1 class="font-display font-extrabold text-[28px] leading-tight">Siswa Kelas Saya</h1>
 <p class="text-muted font-semibold mt-1">Progres membaca tiap anak (hanya jurnal terverifikasi yang dihitung).</p>
 
 <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4 mt-5">

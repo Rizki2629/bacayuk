@@ -2,7 +2,7 @@
 <?= $this->section('content')?>
 
 <div class="flex flex-wrap items-center justify-between gap-3">
-  <h1 class="font-display font-extrabold text-3xl"> Jurnal Saya</h1>
+  <h1 class="font-kartun font-bold text-[28px] sm:text-[32px] leading-[1.15]">Jurnal Saya</h1>
   <a href="<?= base_url('siswa/jurnal/baru')?>" class="btn bg-primary hover:bg-primary-dark text-white border-0 rounded-2xl font-display shadow-lg shadow-primary/20"> Jurnal Baru</a>
 </div>
 
@@ -51,7 +51,7 @@
 <dialog id="modal-raya" class="modal modal-open">
   <div class="modal-box rounded-[26px] shadow-float text-center max-w-sm p-8">
     <img src="<?= base_url('assets/3d/perayaan.jpg')?>" alt="" class="w-24 h-24 mx-auto rounded-full border-4 border-[#F5B942] object-cover shadow-lg">
-    <h3 class="font-display font-extrabold text-3xl mt-3">Selesai Membaca!</h3>
+    <h3 class="font-kartun font-bold text-3xl mt-3">Selesai Membaca!</h3>
     <p class="text-muted font-semibold">Kamu baru saja membaca <b><?= esc($rayakan['judul_buku'])?></b>. Hebat! </p>
     <div class="grid grid-cols-3 gap-2 my-4 font-display">
       <div class="bg-cream rounded-2xl py-3"><p class="font-extrabold text-xl"><?= (int) $rayakan['durasi_menit']?></p><p class="text-xs font-body font-bold text-muted">menit</p></div>

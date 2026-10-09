@@ -3,10 +3,10 @@
 
 <div class="plakat flex items-center justify-between gap-4">
   <div>
-    <h1 class="font-kartun font-display font-extrabold text-3xl">Katalog Buku</h1>
+    <h1 class="font-kartun font-bold text-[28px] sm:text-[32px] leading-[1.15]">Katalog Buku</h1>
     <p class="text-muted font-semibold mt-1">Pilih buku yang ingin kamu baca.</p>
   </div>
-  <img src="<?= base_url('assets/ilustrasi/book-reading.svg')?>" alt="" class="h-24 hidden md:block shrink-0 bg-[#F1EEFF] rounded-xl p-2">
+  <img src="<?= base_url('assets/3d/misi.jpg')?>" alt="" class="h-24 hidden md:block shrink-0 bg-[#F1EEFF] rounded-xl p-2">
 </div>
 
 <form method="get" action="<?= base_url('siswa/buku')?>" class="mt-5 flex gap-2 max-w-md">
@@ -34,7 +34,7 @@
       </div>
       <div class="card-body p-4">
         <span class="badge badge-sm bg-bacayuk-soft text-bacayuk border-0 font-bold"><?= esc($b['genre'])?></span>
-        <h3 class="font-display font-bold leading-snug"><?= esc($b['judul'])?></h3>
+        <h3 class="font-display font-bold text-[15px] leading-snug"><?= esc($b['judul'])?></h3>
         <p class="text-sm text-muted font-semibold"> <?= esc($b['penulis'])?> • <?= (int) $b['jumlah_halaman']?> halaman</p>
         <?php if (! empty($b['tautan_pdf'])):?><a href="<?= esc($b['tautan_pdf'])?>" target="_blank" rel="noopener" class="btn btn-sm bg-primary hover:bg-primary-dark text-white border-0 rounded-xl font-display mt-1"><?= str_contains($b['tautan_pdf'], 'letsreadasia') ? 'Baca Online' : 'Baca PDF'?></a><?php endif;?>
         <a href="<?= base_url('siswa/jurnal/baru')?>" class="btn btn-sm bg-mustard hover:brightness-95 text-ink border-0 rounded-xl font-display mt-1">Mulai Membaca </a>

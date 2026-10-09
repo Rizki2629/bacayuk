@@ -1,7 +1,7 @@
 <?= $this->extend('layout/main')?>
 <?= $this->section('content')?>
 
-<h1 class="font-display font-extrabold text-3xl"> Verifikasi Jurnal</h1>
+<h1 class="font-display font-extrabold text-[28px] leading-tight">Verifikasi Jurnal</h1>
 <p class="text-muted font-semibold mt-1">Periksa jurnal anak-anak, lalu setujui atau minta revisi dengan catatan penyemangat.</p>
 
 <?php if ($daftar === []):?>

@@ -42,7 +42,7 @@ $menuSaya  = [
     <?php endforeach; ?>
   </div>
 
-  <h2 class="font-kartun font-extrabold text-base mt-7 mb-4">Menu Saya</h2>
+  <h2 class="font-display font-bold text-[17px] mt-7 mb-4">Menu Saya</h2>
   <div class="grid grid-cols-3 gap-y-6 gap-x-3 bg-white border border-[#F2EEF8] rounded-[24px] shadow-soft p-5">
     <?php foreach ($menuSaya as [$url, $warna, $bg, $path, $label]): ?>
     <a href="<?= base_url($url)?>" class="text-center group">
@@ -53,7 +53,7 @@ $menuSaya  = [
   </div>
 
   <?php if ($lencana !== []): ?>
-  <h2 class="font-display font-extrabold text-base mt-7 mb-4">Lencana Terbaruku</h2>
+  <h2 class="font-display font-bold text-[17px] mt-7 mb-4">Lencana Terbaruku</h2>
   <div class="flex gap-4 overflow-x-auto pb-1">
     <?php foreach (array_slice($lencana, -6) as $l): ?>
     <div class="flex-none text-center"><span class="w-14 h-14 rounded-2xl bg-[#FFF2CF] border border-[#FFE29A] grid place-items-center text-[26px]"><?= esc($l['ikon'])?></span><p class="text-[10px] font-bold text-muted mt-1.5 w-14 truncate"><?= esc($l['nama'])?></p></div>

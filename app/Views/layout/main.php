@@ -23,7 +23,7 @@ tailwind.config = { theme: { extend: {
 .font-display{font-family:'Plus Jakarta Sans',sans-serif}.nav-link{color:#77728A;transition:.2s}.nav-link:hover{background:#F1EEFF;color:var(--primary)}.nav-link.active{background:var(--primary);color:white;box-shadow:0 8px 18px rgba(105,86,232,.2)}
 .fade-in{animation:fadeIn .45s ease both}
 .shadow-kartu{box-shadow:0 10px 35px rgba(57,45,112,.07)}
-.font-kartun{font-family:'Baloo 2',ui-rounded,system-ui}
+.font-kartun{font-family:'Baloo 2',ui-rounded,system-ui;letter-spacing:.01em}
 .plakat{background:#FFF6E3;border:2px solid #F0DDB8;border-radius:20px;box-shadow:0 10px 24px rgba(41,37,61,.10)}
 .bingkai-adegan{position:relative;overflow:hidden}
 .card{border:1px solid #F2EEF8}
@@ -56,7 +56,7 @@ $uriNow='/'.trim(uri_string(),'/');$namaUser=(string)(session()->get('nama')??''
 <div class="drawer lg:drawer-open"><input id="drawer-bacayuk" type="checkbox" class="drawer-toggle"><div class="drawer-content min-h-screen">
 <header class="h-[74px] bg-white/80 backdrop-blur border-b border-[#EEEAF6] flex items-center justify-between px-5 sm:px-8 sticky top-0 z-30">
 <label for="drawer-bacayuk" class="btn btn-ghost btn-circle lg:hidden"><span class="text-xl">☰</span></label>
-<div class="hidden lg:block"><p class="text-xs text-muted font-semibold uppercase tracking-[.14em]">Ruang belajar</p><p class="font-display font-bold text-lg"><?= esc($judul??'Dashboard')?></p></div>
+<div class="hidden lg:block"><p class="text-xs text-muted font-semibold uppercase tracking-[.14em]">Ruang belajar</p><p class="font-kartun font-bold text-[20px]"><?= esc($judul??'Dashboard')?></p></div>
 <div class="flex items-center gap-3"><div class="hidden sm:block text-right"><p class="font-display font-bold text-sm"><?= esc($namaUser)?></p><p class="text-xs text-muted capitalize"><?= esc($role??'siswa')?></p></div><div class="w-10 h-10 rounded-2xl bg-primary text-white grid place-items-center font-display font-bold shadow-sm"><?= esc($inisial)?></div></div>
 </header>
 <main class="w-full max-w-[1380px] mx-auto px-5 sm:px-8 py-7 fade-in<?= session()->get('role') ? ' pb-28 lg:pb-10' : '' ?>">

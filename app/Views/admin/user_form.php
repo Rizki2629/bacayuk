@@ -2,7 +2,7 @@
 <?= $this->section('content')?>
 <?php $u = $user; $aksi = $u? base_url('admin/users/update/'. $u['id']): base_url('admin/users');?>
 
-<h1 class="font-display font-extrabold text-3xl"><?= $u? ' Ubah User': ' Tambah User'?></h1>
+<h1 class="font-display font-extrabold text-[28px] leading-tight"><?= $u? ' Ubah User': ' Tambah User'?></h1>
 
 <form method="post" action="<?= $aksi?>" class="card bg-white rounded-[22px] shadow-kartu mt-5">
   <div class="card-body gap-5 p-6 sm:p-8">
