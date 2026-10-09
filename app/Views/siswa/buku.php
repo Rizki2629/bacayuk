@@ -9,6 +9,11 @@
   <img src="<?= base_url('assets/ilustrasi/book-reading.svg')?>" alt="" class="h-24 hidden md:block shrink-0 bg-[#F1EEFF] rounded-xl p-2">
 </div>
 
+<form method="get" action="<?= base_url('siswa/buku')?>" class="mt-5 flex gap-2 max-w-md">
+  <input type="text" name="q" value="<?= esc($q ?? '')?>" placeholder="Cari judul buku..." class="input flex-1 h-11 rounded-2xl border-[#E4DFEE] bg-[#FCFAFF] focus:outline-none focus:border-[#B7A8FF]">
+  <button type="submit" class="btn h-11 min-h-0 bg-primary hover:bg-primary-dark text-white border-0 rounded-2xl font-display px-5">Cari</button>
+</form>
+
 <div class="flex flex-wrap gap-2 mt-4">
   <a href="<?= base_url('siswa/buku')?>" class="btn btn-sm rounded-full font-display border-0 <?=! $genre? 'bg-bacayuk text-white shadow-md shadow-primary/20': 'bg-white border border-[#EDEAF6]'?>">Semua</a>
   <?php foreach (\App\Models\BukuModel::GENRE as $g):?>
@@ -31,6 +36,7 @@
         <span class="badge badge-sm bg-bacayuk-soft text-bacayuk border-0 font-bold"><?= esc($b['genre'])?></span>
         <h3 class="font-display font-bold leading-snug"><?= esc($b['judul'])?></h3>
         <p class="text-sm text-muted font-semibold"> <?= esc($b['penulis'])?> • <?= (int) $b['jumlah_halaman']?> halaman</p>
+        <?php if (! empty($b['tautan_pdf'])):?><a href="<?= esc($b['tautan_pdf'])?>" target="_blank" rel="noopener" class="btn btn-sm bg-primary hover:bg-primary-dark text-white border-0 rounded-xl font-display mt-1"><?= str_contains($b['tautan_pdf'], 'letsreadasia') ? 'Baca Online' : 'Baca PDF'?></a><?php endif;?>
         <a href="<?= base_url('siswa/jurnal/baru')?>" class="btn btn-sm bg-mustard hover:brightness-95 text-ink border-0 rounded-xl font-display mt-1">Mulai Membaca </a>
       </div>
     </div>

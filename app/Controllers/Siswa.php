@@ -217,6 +217,7 @@ class Siswa extends BaseController
             'judul' => 'Katalog Buku',
             'buku'  => $m->orderBy('judul', 'ASC')->findAll(),
             'genre' => $genre,
+            'q'     => $q,
         ]);
     }
 

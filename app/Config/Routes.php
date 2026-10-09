@@ -9,6 +9,7 @@ $routes->get('/', 'Auth::index');            // redirect sesuai sesi / ke login
 $routes->get('login', 'Auth::login');
 $routes->post('login', 'Auth::doLogin');
 $routes->get('logout', 'Auth::logout');
+$routes->get('impor-sibi', 'ImporSibi::index'); // SEMENTARA: dihapus setelah impor
 
 // ---------- Siswa ----------
 $routes->group('siswa', ['filter' => 'role:siswa'], static function ($routes) {

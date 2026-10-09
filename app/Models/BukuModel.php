@@ -12,7 +12,7 @@ class BukuModel extends Model
     protected $returnType       = 'array';
     protected $allowedFields    = [
         'judul', 'penulis', 'penerbit', 'genre', 'jumlah_halaman',
-        'warna_sampul', 'ikon', 'deskripsi', 'ditambah_oleh',
+        'warna_sampul', 'ikon', 'deskripsi', 'ditambah_oleh', 'tautan_pdf',
     ];
     protected $useTimestamps = true;
 
