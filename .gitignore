@@ -1,0 +1,22 @@
+# Dependensi (pulihkan dengan: composer install)
+vendor/
+
+# Konfigurasi lokal — JANGAN commit kredensial asli
+.env
+
+# Runtime CodeIgniter
+writable/cache/*
+writable/logs/*
+writable/session/*
+writable/uploads/*
+!writable/cache/index.html
+!writable/logs/index.html
+!writable/session/index.html
+*.sqlite3
+*.log
+
+# OS & editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
