@@ -3,16 +3,16 @@
 
 <h1 class="font-display font-extrabold text-3xl"> <?= esc($judul)?></h1>
 
-<div class="card bg-white rounded-xl shadow-kartu mt-5 overflow-hidden">
+<div class="card bg-white rounded-[22px] shadow-kartu mt-5 overflow-hidden">
   <div class="overflow-x-auto">
-    <table class="table table-zebra w-full">
+    <table class="table w-full">
       <thead><tr class="font-display">
         <th>Tanggal</th><th>Siswa</th><?php if (isset($daftar[0]['nama_kelas'])):?><th>Kelas</th><?php endif;?>
         <th>Buku</th><th>Halaman</th><th>Menit</th><th>Bintang</th><th>Status</th>
       </tr></thead>
       <tbody>
       <?php if ($daftar === []):?>
-        <tr><td colspan="8" class="text-center font-semibold text-slate-500 py-8">Belum ada jurnal.</td></tr>
+        <tr><td colspan="8" class="text-center font-semibold text-muted py-8">Belum ada jurnal.</td></tr>
       <?php endif;?>
       <?php foreach ($daftar as $j):?>
         <tr>

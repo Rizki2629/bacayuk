@@ -12,7 +12,7 @@
 <script src="<?= base_url('assets/js/chart.umd.min.js') ?>"></script>
 <script>
 tailwind.config = { theme: { extend: {
-  colors: { primary:'#6956E8', 'primary-dark':'#5542D0', cream:'#FFF9F0', ink:'#29253D', muted:'#817D92', lilac:'#F1EEFF', peach:'#FFF0E8', mint:'#E7F7F2', gold:'#F5B942', bacayuk:'#6956E8', 'bacayuk-dark':'#5542D0', navy:'#29253D', krem:'#FFF9F0', skyy:'#5B84AE', minty:'#2E927D', pinky:'#D75C83', mustard:'#F5B942' },
+  colors: { primary:'#6956E8', 'primary-dark':'#5542D0', cream:'#FFF9F0', ink:'#29253D', muted:'#817D92', lilac:'#F1EEFF', peach:'#FFF0E8', mint:'#E7F7F2', gold:'#F5B942', bacayuk:'#6956E8', 'bacayuk-dark':'#5542D0', 'bacayuk-soft':'#F1EEFF', navy:'#29253D', krem:'#FFF9F0', skyy:'#5B84AE', minty:'#2E927D', pinky:'#D75C83', mustard:'#F5B942' },
   fontFamily: { display:['"Plus Jakarta Sans"','sans-serif'], body:['"DM Sans"','sans-serif'] },
   boxShadow: { soft:'0 10px 35px rgba(57,45,112,.07)', float:'0 20px 50px rgba(74,61,158,.15)' }
 } } };
@@ -21,7 +21,15 @@ tailwind.config = { theme: { extend: {
 :root{--primary:#6956E8;--ink:#29253D;--cream:#FFF9F0}
 *{box-sizing:border-box} body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink)}
 .font-display{font-family:'Plus Jakarta Sans',sans-serif}.nav-link{color:#77728A;transition:.2s}.nav-link:hover{background:#F1EEFF;color:var(--primary)}.nav-link.active{background:var(--primary);color:white;box-shadow:0 8px 18px rgba(105,86,232,.2)}
-.fade-in{animation:fadeIn .45s ease both}@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fade-in{animation:fadeIn .45s ease both}
+.shadow-kartu{box-shadow:0 10px 35px rgba(57,45,112,.07)}
+.card{border:1px solid #F2EEF8}
+::selection{background:#6956E8;color:#fff}
+::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#D9D2FF;border-radius:99px;border:2px solid #FFF9F0}::-webkit-scrollbar-track{background:transparent}
+.table thead th{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:#A7A2B5;border-bottom:1px solid #F0EBF7;background:#fff}
+.table tbody tr{border-bottom:1px solid #F6F3FA;transition:background .15s}
+.table tbody tr:hover{background:#FCFAFF}
+.input:focus,.select:focus,.textarea:focus{outline:2px solid #D9D2FF;outline-offset:1px;border-color:#B9AEF5}@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>

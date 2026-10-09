@@ -3,15 +3,15 @@
 
 <div class="flex flex-wrap items-center justify-between gap-3">
   <h1 class="font-display font-extrabold text-3xl"> Kelola Katalog Buku</h1>
-  <a href="<?= base_url('buku/baru')?>" class="btn bg-bacayuk hover:bg-bacayuk-dark text-white border-0 rounded-xl font-display shadow"> Tambah Buku</a>
+  <a href="<?= base_url('buku/baru')?>" class="btn bg-primary hover:bg-primary-dark text-white border-0 rounded-2xl font-display shadow-lg shadow-primary/20 shadow"> Tambah Buku</a>
 </div>
 
-<div class="card bg-white rounded-xl shadow-kartu mt-5 overflow-hidden">
+<div class="card bg-white rounded-[22px] shadow-kartu mt-5 overflow-hidden">
   <div class="overflow-x-auto">
-    <table class="table table-zebra w-full">
+    <table class="table w-full">
       <thead><tr class="font-display"><th>Sampul</th><th>Judul</th><th>Penulis</th><th>Genre</th><th>Halaman</th><th class="text-right">Aksi</th></tr></thead>
       <tbody>
-      <?php if ($buku === []):?><tr><td colspan="6" class="text-center font-semibold text-slate-500 py-8">Katalog masih kosong.</td></tr><?php endif;?>
+      <?php if ($buku === []):?><tr><td colspan="6" class="text-center font-semibold text-muted py-8">Katalog masih kosong.</td></tr><?php endif;?>
       <?php foreach ($buku as $b):?>
         <tr>
           <td><span class="w-10 h-12 rounded-md grid place-items-center text-xl shadow" style="background: <?= esc($b['warna_sampul'])?>"><?= esc($b['ikon']?: '')?></span></td>

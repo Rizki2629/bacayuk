@@ -3,12 +3,12 @@
 
 <div class="flex flex-wrap items-center justify-between gap-3">
   <h1 class="font-display font-extrabold text-3xl"> Kelola User</h1>
-  <a href="<?= base_url('admin/users/baru')?>" class="btn bg-bacayuk hover:bg-bacayuk-dark text-white border-0 rounded-xl font-display shadow"> Tambah User</a>
+  <a href="<?= base_url('admin/users/baru')?>" class="btn bg-primary hover:bg-primary-dark text-white border-0 rounded-2xl font-display shadow-lg shadow-primary/20 shadow"> Tambah User</a>
 </div>
 
-<div class="card bg-white rounded-xl shadow-kartu mt-5 overflow-hidden">
+<div class="card bg-white rounded-[22px] shadow-kartu mt-5 overflow-hidden">
   <div class="overflow-x-auto">
-    <table class="table table-zebra w-full">
+    <table class="table w-full">
       <thead><tr class="font-display"><th>Nama</th><th>Username</th><th>Role</th><th>Kelas</th><th>Status</th><th class="text-right">Aksi</th></tr></thead>
       <tbody>
       <?php foreach ($users as $u):?>

@@ -3,15 +3,15 @@
 <?php $j = $jurnal; $aksi = $j? base_url('siswa/jurnal/update/'. $j['id']): base_url('siswa/jurnal');?>
 
 <h1 class="font-display font-extrabold text-3xl"><?= $j? ' Ubah Jurnal': ' Isi Jurnal Baru'?></h1>
-<p class="text-slate-500 font-semibold mt-1">Ceritakan bacaanmu hari ini ya!</p>
+<p class="text-muted font-semibold mt-1">Ceritakan bacaanmu hari ini ya!</p>
 
-<form method="post" action="<?= $aksi?>" class="card bg-white rounded-xl shadow-kartu mt-5">
+<form method="post" action="<?= $aksi?>" class="card bg-white rounded-[22px] shadow-kartu mt-5">
   <div class="card-body gap-4">
     <?= csrf_field()?>
 
     <label class="form-control">
       <span class="label-text font-bold"> Pilih dari katalog (opsional)</span>
-      <select name="buku_id" id="pilih-buku" class="select select-bordered rounded-xl">
+      <select name="buku_id" id="pilih-buku" class="select select-bordered h-12 rounded-2xl border-[#E4DFEE] bg-[#FCFAFF]">
         <option value="">— Tulis judul sendiri di bawah —</option>
         <?php foreach ($buku as $b):?>
           <option value="<?= $b['id']?>" data-judul="<?= esc($b['judul'])?>" <?= (string) old('buku_id', $j['buku_id']?? '') === (string) $b['id']? 'selected': ''?>>
@@ -25,37 +25,37 @@
       <span class="label-text font-bold">Judul Buku *</span>
       <input type="text" name="judul_buku" id="judul-buku" required maxlength="200"
              value="<?= esc(old('judul_buku', $j['judul_buku']?? ''))?>"
-             class="input input-bordered rounded-xl" placeholder="contoh: Si Kancil Anak Cerdik">
+             class="input input-bordered h-12 rounded-2xl border-[#E4DFEE] bg-[#FCFAFF]" placeholder="contoh: Si Kancil Anak Cerdik">
     </label>
 
     <div class="grid sm:grid-cols-4 gap-4">
       <label class="form-control">
         <span class="label-text font-bold"> Tanggal *</span>
         <input type="date" name="tanggal" required max="<?= date('Y-m-d')?>"
-               value="<?= esc(old('tanggal', $j['tanggal']?? date('Y-m-d')))?>" class="input input-bordered rounded-xl">
+               value="<?= esc(old('tanggal', $j['tanggal']?? date('Y-m-d')))?>" class="input input-bordered h-12 rounded-2xl border-[#E4DFEE] bg-[#FCFAFF]">
       </label>
       <label class="form-control">
         <span class="label-text font-bold">Halaman dari *</span>
-        <input type="number" name="halaman_dari" required min="1" value="<?= esc(old('halaman_dari', $j['halaman_dari']?? 1))?>" class="input input-bordered rounded-xl">
+        <input type="number" name="halaman_dari" required min="1" value="<?= esc(old('halaman_dari', $j['halaman_dari']?? 1))?>" class="input input-bordered h-12 rounded-2xl border-[#E4DFEE] bg-[#FCFAFF]">
       </label>
       <label class="form-control">
         <span class="label-text font-bold">Halaman sampai *</span>
-        <input type="number" name="halaman_sampai" required min="1" value="<?= esc(old('halaman_sampai', $j['halaman_sampai']?? 10))?>" class="input input-bordered rounded-xl">
+        <input type="number" name="halaman_sampai" required min="1" value="<?= esc(old('halaman_sampai', $j['halaman_sampai']?? 10))?>" class="input input-bordered h-12 rounded-2xl border-[#E4DFEE] bg-[#FCFAFF]">
       </label>
       <label class="form-control">
-        <span class="label-text font-bold">⏱ Durasi (menit) *</span>
-        <input type="number" name="durasi_menit" required min="1" max="600" value="<?= esc(old('durasi_menit', $j['durasi_menit']?? 15))?>" class="input input-bordered rounded-xl">
+        <span class="label-text font-bold">Durasi membaca (menit) *</span>
+        <input type="number" name="durasi_menit" required min="1" max="600" value="<?= esc(old('durasi_menit', $j['durasi_menit']?? 15))?>" class="input input-bordered h-12 rounded-2xl border-[#E4DFEE] bg-[#FCFAFF]">
       </label>
     </div>
 
     <label class="form-control">
       <span class="label-text font-bold"> Ringkasan — ceritakan kembali isi bacaanmu</span>
-      <textarea name="ringkasan" rows="3" class="textarea textarea-bordered rounded-xl" placeholder="Tadi aku membaca tentang..."><?= esc(old('ringkasan', $j['ringkasan']?? ''))?></textarea>
+      <textarea name="ringkasan" rows="3" class="textarea textarea-bordered rounded-2xl border-[#E4DFEE] bg-[#FCFAFF]" placeholder="Tadi aku membaca tentang..."><?= esc(old('ringkasan', $j['ringkasan']?? ''))?></textarea>
     </label>
 
     <label class="form-control">
       <span class="label-text font-bold"> Pesan / pelajaran dari cerita</span>
-      <textarea name="pesan_cerita" rows="2" class="textarea textarea-bordered rounded-xl" placeholder="Dari cerita ini aku belajar..."><?= esc(old('pesan_cerita', $j['pesan_cerita']?? ''))?></textarea>
+      <textarea name="pesan_cerita" rows="2" class="textarea textarea-bordered rounded-2xl border-[#E4DFEE] bg-[#FCFAFF]" placeholder="Dari cerita ini aku belajar..."><?= esc(old('pesan_cerita', $j['pesan_cerita']?? ''))?></textarea>
     </label>
 
     <div class="grid sm:grid-cols-2 gap-4">
@@ -81,8 +81,8 @@
     </div>
 
     <div class="flex gap-3 mt-2">
-      <button class="btn bg-bacayuk hover:bg-bacayuk-dark text-white border-0 rounded-xl font-display text-lg flex-1"> Simpan Jurnal</button>
-      <a href="<?= base_url('siswa/jurnal')?>" class="btn btn-ghost rounded-xl font-display">Batal</a>
+      <button class="btn bg-primary hover:bg-primary-dark text-white border-0 rounded-2xl font-display shadow-lg shadow-primary/20 text-lg flex-1"> Simpan Jurnal</button>
+      <a href="<?= base_url('siswa/jurnal')?>" class="btn btn-ghost rounded-2xl font-display">Batal</a>
     </div>
   </div>
 </form>

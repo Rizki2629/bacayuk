@@ -3,26 +3,26 @@
 
 <div class="flex flex-wrap items-center justify-between gap-3">
   <h1 class="font-display font-extrabold text-3xl"> Jurnal Saya</h1>
-  <a href="<?= base_url('siswa/jurnal/baru')?>" class="btn bg-bacayuk hover:bg-bacayuk-dark text-white border-0 rounded-xl font-display shadow"> Jurnal Baru</a>
+  <a href="<?= base_url('siswa/jurnal/baru')?>" class="btn bg-primary hover:bg-primary-dark text-white border-0 rounded-2xl font-display shadow-lg shadow-primary/20"> Jurnal Baru</a>
 </div>
 
 <?php if ($daftar === []):?>
-  <div class="card bg-white rounded-xl shadow-kartu mt-5"><div class="card-body items-center text-center py-12">
+  <div class="card bg-white rounded-[22px] shadow-kartu mt-5"><div class="card-body items-center text-center py-12">
     <img src="<?= base_url('assets/ilustrasi/no-data.svg')?>" alt="" class="h-28">
     <p class="font-display font-bold text-xl mt-2">Belum ada jurnal</p>
-    <p class="text-slate-500 font-semibold">Klik tombol "Jurnal Baru" untuk mencatat bacaan pertamamu.</p>
+    <p class="text-muted font-semibold">Klik tombol "Jurnal Baru" untuk mencatat bacaan pertamamu.</p>
   </div></div>
 <?php else:?>
   <div class="grid md:grid-cols-2 gap-4 mt-5">
   <?php foreach ($daftar as $j):?>
-    <div class="card bg-white rounded-xl shadow-kartu">
+    <div class="card bg-white rounded-[22px] shadow-kartu">
       <div class="card-body p-5">
         <div class="flex items-start justify-between gap-2">
           <h3 class="font-display font-bold text-lg leading-snug"><?= esc($j['judul_buku'])?></h3>
-          <?php $b = ['menunggu' => 'badge-warning', 'terverifikasi' => 'badge-success', 'revisi' => 'badge-error'][$j['status']];?>
-          <span class="badge <?= $b?> text-white border-0 font-bold shrink-0"><?= esc($j['status'])?></span>
+          <?php $b = ['menunggu' => 'bg-[#FFF1D7] text-[#A36C17]', 'terverifikasi' => 'bg-mint text-[#2A816F]', 'revisi' => 'bg-[#FFE7EC] text-[#A23C56]'][$j['status']];?>
+          <span class="badge <?= $b?> border-0 font-bold shrink-0 rounded-full px-3"><?= esc($j['status'])?></span>
         </div>
-        <p class="text-sm font-semibold text-slate-500">
+        <p class="text-sm font-semibold text-muted">
            <?= date('d M Y', strtotime($j['tanggal']))?> •  hal. <?= (int) $j['halaman_dari']?>–<?= (int) $j['halaman_sampai']?> (<?= (int) $j['jumlah_halaman']?> hal) •  <?= (int) $j['durasi_menit']?> menit • <?= esc($j['perasaan'])?>
         </p>
         <p class="text-amber-500 text-lg leading-none"><?= str_repeat('★', (int) $j['rating'])?><span class="text-slate-200"><?= str_repeat('★', 5 - (int) $j['rating'])?></span></p>
@@ -52,15 +52,15 @@
   <div class="modal-box rounded-xl text-center max-w-sm">
     <div class="w-24 h-24 mx-auto rounded-full bg-green-100 border-4 border-green-400 grid place-items-center text-6xl">✓</div>
     <h3 class="font-display font-extrabold text-3xl mt-3">Selesai Membaca!</h3>
-    <p class="text-slate-500 font-semibold">Kamu baru saja membaca <b><?= esc($rayakan['judul_buku'])?></b>. Hebat! </p>
+    <p class="text-muted font-semibold">Kamu baru saja membaca <b><?= esc($rayakan['judul_buku'])?></b>. Hebat! </p>
     <div class="grid grid-cols-3 gap-2 my-4 font-display">
-      <div class="bg-krem rounded-xl py-3"><p class="font-extrabold text-xl"><?= (int) $rayakan['durasi_menit']?></p><p class="text-xs font-body font-bold text-slate-500">menit</p></div>
-      <div class="bg-krem rounded-xl py-3"><p class="font-extrabold text-xl"><?= (int) $rayakan['jumlah_halaman']?></p><p class="text-xs font-body font-bold text-slate-500">halaman</p></div>
-      <div class="bg-krem rounded-xl py-3"><p class="font-extrabold text-xl"><?= esc($rayakan['perasaan'])?></p><p class="text-xs font-body font-bold text-slate-500">perasaan</p></div>
+      <div class="bg-krem rounded-xl py-3"><p class="font-extrabold text-xl"><?= (int) $rayakan['durasi_menit']?></p><p class="text-xs font-body font-bold text-muted">menit</p></div>
+      <div class="bg-krem rounded-xl py-3"><p class="font-extrabold text-xl"><?= (int) $rayakan['jumlah_halaman']?></p><p class="text-xs font-body font-bold text-muted">halaman</p></div>
+      <div class="bg-krem rounded-xl py-3"><p class="font-extrabold text-xl"><?= esc($rayakan['perasaan'])?></p><p class="text-xs font-body font-bold text-muted">perasaan</p></div>
     </div>
     <p class="text-amber-500 text-3xl"><?= str_repeat('★', (int) $rayakan['rating'])?><span class="text-slate-200"><?= str_repeat('★', 5 - (int) $rayakan['rating'])?></span></p>
     <form method="dialog" class="mt-4">
-      <button class="btn btn-block bg-bacayuk hover:bg-bacayuk-dark text-white border-0 rounded-xl font-display text-lg">Lanjutkan </button>
+      <button class="btn btn-block bg-primary hover:bg-primary-dark text-white border-0 rounded-2xl font-display shadow-lg shadow-primary/20 text-lg">Lanjutkan </button>
     </form>
   </div>
 </dialog>
