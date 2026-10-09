@@ -64,9 +64,9 @@ class Siswa extends BaseController
         $rules = [
             'judul_buku'     => 'required|max_length[200]',
             'tanggal'        => 'required|valid_date',
-            'halaman_dari'   => 'required|integer|greater_than_equal_to[1]',
+            'halaman_dari'   => 'required|integer|greater_than_equal_to[0]',
             'halaman_sampai' => 'required|integer|greater_than_equal_to[1]',
-            'durasi_menit'   => 'required|integer|greater_than_equal_to[1]|less_than_equal_to[600]',
+            'durasi_menit'   => 'required|integer|greater_than_equal_to[1]|less_than_equal_to[1440]',
             'rating'         => 'required|integer|greater_than_equal_to[1]|less_than_equal_to[5]',
         ];
         if (! $this->validate($rules)) {
@@ -78,6 +78,11 @@ class Siswa extends BaseController
         if ($sampai < $dari) {
             return redirect()->back()->withInput()
                 ->with('errors', ['halaman_sampai' => 'Halaman sampai harus lebih besar dari halaman dari.']);
+        }
+
+        if (strtotime((string) $this->request->getPost('tanggal')) > strtotime('today')) {
+            return redirect()->back()->withInput()
+                ->with('errors', ['tanggal' => 'Tanggal membaca tidak boleh di masa depan.']);
         }
 
         $bukuId = $this->request->getPost('buku_id');

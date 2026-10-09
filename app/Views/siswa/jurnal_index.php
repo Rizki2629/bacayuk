@@ -25,7 +25,7 @@
         <p class="text-sm font-semibold text-muted">
            <?= date('d M Y', strtotime($j['tanggal']))?> •  hal. <?= (int) $j['halaman_dari']?>–<?= (int) $j['halaman_sampai']?> (<?= (int) $j['jumlah_halaman']?> hal) •  <?= (int) $j['durasi_menit']?> menit • <?= esc($j['perasaan'])?>
         </p>
-        <p class="text-amber-500 text-lg leading-none"><?= str_repeat('★', (int) $j['rating'])?><span class="text-slate-200"><?= str_repeat('★', 5 - (int) $j['rating'])?></span></p>
+        <p class="text-amber-500 text-lg leading-none"><?= str_repeat('★', (int) $j['rating'])?><span class="text-[#E9E4F5]"><?= str_repeat('★', 5 - (int) $j['rating'])?></span></p>
         <?php if ($j['ringkasan']):?><p class="text-sm"><span class="font-bold">Ringkasanku:</span> <?= esc($j['ringkasan'])?></p><?php endif;?>
         <?php if ($j['pesan_cerita']):?><p class="text-sm"><span class="font-bold">Pesan cerita:</span> <?= esc($j['pesan_cerita'])?></p><?php endif;?>
         <?php if ($j['catatan_guru']):?>
@@ -49,16 +49,16 @@
 <?php $rayakan = session()->getFlashdata('celebrate'); if ($rayakan):?>
 <!-- Popup perayaan (pola Exercise Completed Modal dari ui.live) -->
 <dialog id="modal-raya" class="modal modal-open">
-  <div class="modal-box rounded-xl text-center max-w-sm">
-    <div class="w-24 h-24 mx-auto rounded-full bg-green-100 border-4 border-green-400 grid place-items-center text-6xl">✓</div>
+  <div class="modal-box rounded-[26px] shadow-float text-center max-w-sm p-8">
+    <div class="w-24 h-24 mx-auto rounded-full bg-mint border-4 border-[#2E927D] text-[#2A816F] grid place-items-center text-6xl font-display">✓</div>
     <h3 class="font-display font-extrabold text-3xl mt-3">Selesai Membaca!</h3>
     <p class="text-muted font-semibold">Kamu baru saja membaca <b><?= esc($rayakan['judul_buku'])?></b>. Hebat! </p>
     <div class="grid grid-cols-3 gap-2 my-4 font-display">
-      <div class="bg-krem rounded-xl py-3"><p class="font-extrabold text-xl"><?= (int) $rayakan['durasi_menit']?></p><p class="text-xs font-body font-bold text-muted">menit</p></div>
-      <div class="bg-krem rounded-xl py-3"><p class="font-extrabold text-xl"><?= (int) $rayakan['jumlah_halaman']?></p><p class="text-xs font-body font-bold text-muted">halaman</p></div>
-      <div class="bg-krem rounded-xl py-3"><p class="font-extrabold text-xl"><?= esc($rayakan['perasaan'])?></p><p class="text-xs font-body font-bold text-muted">perasaan</p></div>
+      <div class="bg-cream rounded-2xl py-3"><p class="font-extrabold text-xl"><?= (int) $rayakan['durasi_menit']?></p><p class="text-xs font-body font-bold text-muted">menit</p></div>
+      <div class="bg-cream rounded-2xl py-3"><p class="font-extrabold text-xl"><?= (int) $rayakan['jumlah_halaman']?></p><p class="text-xs font-body font-bold text-muted">halaman</p></div>
+      <div class="bg-cream rounded-2xl py-3"><p class="font-extrabold text-xl"><?= esc($rayakan['perasaan'])?></p><p class="text-xs font-body font-bold text-muted">perasaan</p></div>
     </div>
-    <p class="text-amber-500 text-3xl"><?= str_repeat('★', (int) $rayakan['rating'])?><span class="text-slate-200"><?= str_repeat('★', 5 - (int) $rayakan['rating'])?></span></p>
+    <p class="text-gold text-3xl"><?= str_repeat('★', (int) $rayakan['rating'])?><span class="text-slate-200"><?= str_repeat('★', 5 - (int) $rayakan['rating'])?></span></p>
     <form method="dialog" class="mt-4">
       <button class="btn btn-block bg-primary hover:bg-primary-dark text-white border-0 rounded-2xl font-display shadow-lg shadow-primary/20 text-lg">Lanjutkan </button>
     </form>

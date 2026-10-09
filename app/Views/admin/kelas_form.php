@@ -5,17 +5,17 @@
 <h1 class="font-display font-extrabold text-3xl"><?= $k? ' Ubah Kelas': ' Tambah Kelas'?></h1>
 
 <form method="post" action="<?= $aksi?>" class="card bg-white rounded-[22px] shadow-kartu mt-5">
-  <div class="card-body gap-4">
+  <div class="card-body gap-5 p-6 sm:p-8">
     <?= csrf_field()?>
     <div class="grid sm:grid-cols-3 gap-4">
-      <label class="form-control"><span class="label-text font-bold">Nama Kelas *</span>
+      <label class="form-control gap-1.5"><span class="label-text text-sm font-bold">Nama Kelas *</span>
         <input type="text" name="nama" required maxlength="50" value="<?= esc(old('nama', $k['nama']?? ''))?>" class="input input-bordered h-12 rounded-2xl border-[#E4DFEE] bg-[#FCFAFF]" placeholder="contoh: 4A"></label>
-      <label class="form-control"><span class="label-text font-bold">Tingkat *</span>
+      <label class="form-control gap-1.5"><span class="label-text text-sm font-bold">Tingkat *</span>
         <input type="number" name="tingkat" required min="1" max="12" value="<?= esc(old('tingkat', $k['tingkat']?? 4))?>" class="input input-bordered h-12 rounded-2xl border-[#E4DFEE] bg-[#FCFAFF]"></label>
-      <label class="form-control"><span class="label-text font-bold">Tahun Ajaran</span>
+      <label class="form-control gap-1.5"><span class="label-text text-sm font-bold">Tahun Ajaran</span>
         <input type="text" name="tahun_ajaran" maxlength="9" value="<?= esc(old('tahun_ajaran', $k['tahun_ajaran']?? '2026/2027'))?>" class="input input-bordered h-12 rounded-2xl border-[#E4DFEE] bg-[#FCFAFF]"></label>
     </div>
-    <label class="form-control"><span class="label-text font-bold">Wali Kelas (Guru)</span>
+    <label class="form-control gap-1.5"><span class="label-text text-sm font-bold">Wali Kelas (Guru)</span>
       <select name="guru_id" class="select select-bordered h-12 rounded-2xl border-[#E4DFEE] bg-[#FCFAFF]">
         <option value="">— Belum ditunjuk —</option>
         <?php foreach ($guru as $g):?>
@@ -23,8 +23,8 @@
         <?php endforeach;?>
       </select></label>
     <div class="flex gap-3">
-      <button class="btn bg-primary hover:bg-primary-dark text-white border-0 rounded-2xl font-display shadow-lg shadow-primary/20 text-lg flex-1"> Simpan</button>
-      <a href="<?= base_url('admin/kelas')?>" class="btn btn-ghost rounded-2xl font-display">Batal</a>
+      <button class="btn bg-primary hover:bg-primary-dark text-white border-0 rounded-2xl font-display shadow-lg shadow-primary/20 text-lg h-12 flex-1"> Simpan</button>
+      <a href="<?= base_url('admin/kelas')?>" class="btn bg-bacayuk-soft text-primary hover:bg-[#E3DBFF] border-0 rounded-2xl font-display text-lg h-12 px-6">Batal</a>
     </div>
   </div>
 </form>

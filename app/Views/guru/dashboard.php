@@ -75,7 +75,7 @@
 new Chart(document.getElementById('grafikKelas'), {
   type: 'bar',
   data: { labels: <?= json_encode($grafik['labels'])?>,
-    datasets: [{ label: 'Menit', data: <?= json_encode($grafik['menit'])?>, backgroundColor: '#2F8F83', borderRadius: 12, maxBarThickness: 42 }] },
+    datasets: [{ label: 'Menit', data: <?= json_encode($grafik['menit'])?>, backgroundColor: '#D9D2FF', hoverBackgroundColor: '#6956E8', borderRadius: 12, maxBarThickness: 42 }] },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
     scales: { y: { beginAtZero: true, grid: { color: '#E6F4F1' } }, x: { grid: { display: false } } } }
 });

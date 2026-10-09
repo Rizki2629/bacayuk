@@ -3,7 +3,7 @@
 
 <div class="flex flex-wrap items-center justify-between gap-3">
   <h1 class="font-display font-extrabold text-3xl"> Kelola Katalog Buku</h1>
-  <a href="<?= base_url('buku/baru')?>" class="btn bg-primary hover:bg-primary-dark text-white border-0 rounded-2xl font-display shadow-lg shadow-primary/20 shadow"> Tambah Buku</a>
+  <a href="<?= base_url('buku/baru')?>" class="btn bg-primary hover:bg-primary-dark text-white border-0 rounded-2xl font-display shadow-lg shadow-primary/20"> Tambah Buku</a>
 </div>
 
 <div class="card bg-white rounded-[22px] shadow-kartu mt-5 overflow-hidden">

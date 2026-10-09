@@ -15,7 +15,7 @@ class UserLencanaModel extends Model
 
     public function milikUser(int $userId): array
     {
-        return $this->select('lencana.*, user_lencana.diraih_pada')
+        return $this->select('lencana.*, user_lencana.lencana_id, user_lencana.diraih_pada')
             ->join('lencana', 'lencana.id = user_lencana.lencana_id')
             ->where('user_lencana.user_id', $userId)
             ->orderBy('user_lencana.diraih_pada', 'ASC')
