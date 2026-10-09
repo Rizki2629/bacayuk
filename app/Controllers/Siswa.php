@@ -32,11 +32,39 @@ class Siswa extends BaseController
             ->orderBy('tanggal', 'DESC')
             ->findAll(5);
 
+        $seringDibaca = $this->jurnal->select('jurnal_baca.judul_buku, COUNT(*) AS dibaca, buku.warna_sampul AS warna, buku.ikon, buku.penulis')
+            ->join('buku', 'buku.judul = jurnal_baca.judul_buku', 'left')
+            ->where('jurnal_baca.status', 'terverifikasi')
+            ->groupBy('jurnal_baca.judul_buku, buku.warna_sampul, buku.ikon, buku.penulis')
+            ->orderBy('dibaca', 'DESC')
+            ->findAll(3);
+
         return view('siswa/dashboard', [
-            'judul'   => 'Dashboard',
-            'stats'   => $stats,
-            'grafik'  => $this->jurnal->grafik7Hari($id),
-            'lanjut'  => $lanjut,
+            'judul'       => 'Dashboard',
+            'stats'       => $stats,
+            'grafik'      => $this->jurnal->grafik7Hari($id),
+            'lanjut'      => $lanjut,
+            'lencana'     => model(UserLencanaModel::class)->milikUser($id),
+            'bukuTerbaru' => model(BukuModel::class)->orderBy('id', 'DESC')->findAll(6),
+            'seringDibaca' => $seringDibaca,
+        ]);
+    }
+
+    public function profil()
+    {
+        $id   = $this->saya();
+        $user = model(\App\Models\UserModel::class)->find($id);
+        $kelasNama = '-';
+        if ($user && ! empty($user['kelas_id'])) {
+            $kelas = model(\App\Models\KelasModel::class)->find((int) $user['kelas_id']);
+            $kelasNama = $kelas['nama'] ?? '-';
+        }
+
+        return view('siswa/profil', [
+            'judul'   => 'Profil Saya',
+            'user'    => $user,
+            'kelas'   => $kelasNama,
+            'stats'   => $this->jurnal->statistikSiswa($id),
             'lencana' => model(UserLencanaModel::class)->milikUser($id),
         ]);
     }
@@ -177,9 +205,13 @@ class Siswa extends BaseController
     public function buku()
     {
         $genre = $this->request->getGet('genre');
+        $q     = trim((string) $this->request->getGet('q'));
         $m     = model(BukuModel::class);
         if ($genre && in_array($genre, BukuModel::GENRE, true)) {
             $m = $m->where('genre', $genre);
+        }
+        if ($q !== '') {
+            $m = $m->like('judul', $q);
         }
         return view('siswa/buku', [
             'judul' => 'Katalog Buku',

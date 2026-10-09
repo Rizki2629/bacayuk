@@ -22,6 +22,7 @@ $routes->group('siswa', ['filter' => 'role:siswa'], static function ($routes) {
     $routes->get('buku', 'Siswa::buku');
     $routes->get('lencana', 'Siswa::lencana');
     $routes->get('peringkat', 'Siswa::peringkat');
+    $routes->get('profil', 'Siswa::profil');
 });
 
 // ---------- Guru ----------
