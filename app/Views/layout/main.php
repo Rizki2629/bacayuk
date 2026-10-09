@@ -6,7 +6,7 @@
 <title><?= esc($judul ?? 'Dashboard') ?> — BacaYuk</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link href="<?= base_url('assets/css/daisyui.min.css') ?>" rel="stylesheet" type="text/css">
 <script src="<?= base_url('assets/js/tailwind-play.js') ?>"></script>
 <script src="<?= base_url('assets/js/chart.umd.min.js') ?>"></script>
@@ -23,6 +23,9 @@ tailwind.config = { theme: { extend: {
 .font-display{font-family:'Plus Jakarta Sans',sans-serif}.nav-link{color:#77728A;transition:.2s}.nav-link:hover{background:#F1EEFF;color:var(--primary)}.nav-link.active{background:var(--primary);color:white;box-shadow:0 8px 18px rgba(105,86,232,.2)}
 .fade-in{animation:fadeIn .45s ease both}
 .shadow-kartu{box-shadow:0 10px 35px rgba(57,45,112,.07)}
+.font-kartun{font-family:'Baloo 2',ui-rounded,system-ui}
+.plakat{background:#FFF6E3;border:2px solid #F0DDB8;border-radius:20px;box-shadow:0 10px 24px rgba(41,37,61,.10)}
+.bingkai-adegan{position:relative;overflow:hidden}
 .card{border:1px solid #F2EEF8}
 ::selection{background:#6956E8;color:#fff}
 ::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#D9D2FF;border-radius:99px;border:2px solid #FFF9F0}::-webkit-scrollbar-track{background:transparent}

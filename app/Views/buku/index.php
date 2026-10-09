@@ -2,7 +2,7 @@
 <?= $this->section('content')?>
 
 <div class="flex flex-wrap items-center justify-between gap-3">
-  <h1 class="font-display font-extrabold text-3xl"> Kelola Katalog Buku</h1>
+  <h1 class="font-kartun font-display font-extrabold text-3xl"> Kelola Katalog Buku</h1>
   <a href="<?= base_url('buku/baru')?>" class="btn bg-primary hover:bg-primary-dark text-white border-0 rounded-2xl font-display shadow-lg shadow-primary/20"> Tambah Buku</a>
 </div>
 
@@ -11,7 +11,7 @@
     <table class="table w-full">
       <thead><tr class="font-display"><th>Sampul</th><th>Judul</th><th>Penulis</th><th>Genre</th><th>Halaman</th><th class="text-right">Aksi</th></tr></thead>
       <tbody>
-      <?php if ($buku === []):?><tr><td colspan="6" class="text-center font-semibold text-muted py-8">Katalog masih kosong.</td></tr><?php endif;?>
+      <?php if ($buku === []):?><tr><td colspan="6" class="text-center font-semibold text-muted py-8"><img src="<?= base_url('assets/3d/kosong.jpg')?>" alt="" class="h-20 mx-auto mb-2">Katalog masih kosong.</td></tr><?php endif;?>
       <?php foreach ($buku as $b):?>
         <tr>
           <td><span class="w-10 h-12 rounded-md grid place-items-center text-xl shadow" style="background: <?= esc($b['warna_sampul'])?>"><?= esc($b['ikon']?: '')?></span></td>

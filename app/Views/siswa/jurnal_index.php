@@ -8,7 +8,7 @@
 
 <?php if ($daftar === []):?>
   <div class="card bg-white rounded-[22px] shadow-kartu mt-5"><div class="card-body items-center text-center py-12">
-    <img src="<?= base_url('assets/ilustrasi/no-data.svg')?>" alt="" class="h-28">
+    <img src="<?= base_url('assets/3d/kosong.jpg')?>" alt="" class="h-28">
     <p class="font-display font-bold text-xl mt-2">Belum ada jurnal</p>
     <p class="text-muted font-semibold">Klik tombol "Jurnal Baru" untuk mencatat bacaan pertamamu.</p>
   </div></div>
@@ -50,7 +50,7 @@
 <!-- Popup perayaan (pola Exercise Completed Modal dari ui.live) -->
 <dialog id="modal-raya" class="modal modal-open">
   <div class="modal-box rounded-[26px] shadow-float text-center max-w-sm p-8">
-    <div class="w-24 h-24 mx-auto rounded-full bg-mint border-4 border-[#2E927D] text-[#2A816F] grid place-items-center text-6xl font-display">✓</div>
+    <img src="<?= base_url('assets/3d/perayaan.jpg')?>" alt="" class="w-24 h-24 mx-auto rounded-full border-4 border-[#F5B942] object-cover shadow-lg">
     <h3 class="font-display font-extrabold text-3xl mt-3">Selesai Membaca!</h3>
     <p class="text-muted font-semibold">Kamu baru saja membaca <b><?= esc($rayakan['judul_buku'])?></b>. Hebat! </p>
     <div class="grid grid-cols-3 gap-2 my-4 font-display">

@@ -23,7 +23,10 @@ $menuSaya  = [
           <h1 class="font-display font-extrabold text-[22px] mt-1.5"><?= esc($namaUser)?></h1>
           <p class="text-white/75 text-sm"><?= esc($username)?>@bacayuk.sch.id</p>
         </div>
-        <span class="flex-none bg-gold text-[#5C4300] text-[11px] font-extrabold px-3 py-1.5 rounded-full">SISWA AKTIF</span>
+        <div class="flex flex-col items-end gap-2 flex-none">
+          <img src="<?= base_url('assets/3d/maskot.jpg')?>" alt="" class="h-16 w-16 object-cover rounded-2xl drop-shadow-lg">
+          <span class="bg-gold text-[#5C4300] text-[11px] font-extrabold px-3 py-1.5 rounded-full">SISWA AKTIF</span>
+        </div>
       </div>
       <span class="inline-block mt-3 bg-white/95 text-[#453A8F] text-[11px] font-extrabold px-3 py-1.5 rounded-full">Kelas <?= esc($kelas)?> ›</span>
       <div class="bg-white rounded-2xl mt-4 px-4 pt-3.5 pb-2.5 text-center">
@@ -39,7 +42,7 @@ $menuSaya  = [
     <?php endforeach; ?>
   </div>
 
-  <h2 class="font-display font-extrabold text-base mt-7 mb-4">Menu Saya</h2>
+  <h2 class="font-kartun font-extrabold text-base mt-7 mb-4">Menu Saya</h2>
   <div class="grid grid-cols-3 gap-y-6 gap-x-3 bg-white border border-[#F2EEF8] rounded-[24px] shadow-soft p-5">
     <?php foreach ($menuSaya as [$url, $warna, $bg, $path, $label]): ?>
     <a href="<?= base_url($url)?>" class="text-center group">

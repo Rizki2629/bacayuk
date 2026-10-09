@@ -1,9 +1,9 @@
 <?= $this->extend('layout/main')?>
 <?= $this->section('content')?>
 
-<div class="flex items-center justify-between gap-4">
+<div class="plakat flex items-center justify-between gap-4">
   <div>
-    <h1 class="font-display font-extrabold text-3xl">Katalog Buku</h1>
+    <h1 class="font-kartun font-display font-extrabold text-3xl">Katalog Buku</h1>
     <p class="text-muted font-semibold mt-1">Pilih buku yang ingin kamu baca.</p>
   </div>
   <img src="<?= base_url('assets/ilustrasi/book-reading.svg')?>" alt="" class="h-24 hidden md:block shrink-0 bg-[#F1EEFF] rounded-xl p-2">
@@ -23,7 +23,7 @@
 
 <?php if ($buku === []):?>
   <div class="card bg-white rounded-[22px] shadow-kartu mt-5"><div class="card-body items-center py-10">
-    <img src="<?= base_url('assets/ilustrasi/no-data.svg')?>" alt="" class="h-24 mx-auto"><p class="font-display font-bold text-lg mt-2">Belum ada buku di genre ini.</p>
+    <img src="<?= base_url('assets/3d/kosong.jpg')?>" alt="" class="h-24 mx-auto"><p class="font-display font-bold text-lg mt-2">Belum ada buku di genre ini.</p>
   </div></div>
 <?php else:?>
   <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-5">

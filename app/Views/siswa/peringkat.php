@@ -1,12 +1,12 @@
 <?= $this->extend('layout/main')?>
 <?= $this->section('content')?>
 
-<div class="flex items-center justify-between gap-4">
+<div class="plakat flex items-center justify-between gap-4">
   <div>
-    <h1 class="font-display font-extrabold text-3xl">Peringkat Kelas</h1>
+    <h1 class="font-kartun font-display font-extrabold text-3xl">Peringkat Kelas</h1>
     <p class="text-muted font-semibold mt-1">Berdasarkan jurnal yang sudah terverifikasi.</p>
   </div>
-  <img src="<?= base_url('assets/ilustrasi/winners.svg')?>" alt="" class="h-24 hidden md:block shrink-0">
+  <img src="<?= base_url('assets/3d/maskot.jpg')?>" alt="" class="h-16 w-16 object-cover rounded-2xl hidden md:block shrink-0">
 </div>
 
 <div class="card bg-white rounded-[22px] shadow-kartu mt-5">
