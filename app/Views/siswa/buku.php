@@ -29,8 +29,9 @@
   <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-5">
   <?php foreach ($buku as $b):?>
     <div class="card bg-white rounded-[22px] shadow-kartu overflow-hidden transition duration-200 hover:-translate-y-1">
-      <div class="h-36 grid place-items-center text-6xl" style="background: <?= esc($b['warna_sampul'])?>22">
+      <div class="h-36 grid place-items-center text-6xl relative overflow-hidden" style="background: <?= esc($b['warna_sampul'])?>22">
         <span class="w-20 h-24 rounded-r-xl rounded-l-sm grid place-items-center text-4xl shadow" style="background: <?= esc($b['warna_sampul'])?>"><?= esc($b['ikon']?: '')?></span>
+        <?php if (! empty($b['sampul_url'])):?><img src="<?= esc($b['sampul_url'])?>" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'"><?php endif;?>
       </div>
       <div class="card-body p-4">
         <span class="badge badge-sm bg-bacayuk-soft text-bacayuk border-0 font-bold"><?= esc($b['genre'])?></span>

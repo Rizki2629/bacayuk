@@ -32,10 +32,10 @@ class Siswa extends BaseController
             ->orderBy('tanggal', 'DESC')
             ->findAll(5);
 
-        $seringDibaca = $this->jurnal->select('jurnal_baca.judul_buku, COUNT(*) AS dibaca, buku.warna_sampul AS warna, buku.ikon, buku.penulis')
+        $seringDibaca = $this->jurnal->select('jurnal_baca.judul_buku, COUNT(*) AS dibaca, buku.warna_sampul AS warna, buku.ikon, buku.penulis, buku.sampul_url')
             ->join('buku', 'buku.judul = jurnal_baca.judul_buku', 'left')
             ->where('jurnal_baca.status', 'terverifikasi')
-            ->groupBy('jurnal_baca.judul_buku, buku.warna_sampul, buku.ikon, buku.penulis')
+            ->groupBy('jurnal_baca.judul_buku, buku.warna_sampul, buku.ikon, buku.penulis, buku.sampul_url')
             ->orderBy('dibaca', 'DESC')
             ->findAll(3);
 

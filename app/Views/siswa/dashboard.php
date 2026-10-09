@@ -38,7 +38,7 @@
   <div class="flex gap-3 overflow-x-auto pb-1 -mx-5 px-5">
     <?php foreach ($bukuTerbaru as $b): ?>
     <a href="<?= base_url('siswa/buku')?>" class="flex-none w-[104px]">
-      <div class="h-[138px] rounded-2xl p-3 text-white flex flex-col shadow-md relative overflow-hidden" style="background: linear-gradient(160deg, <?= esc($b['warna_sampul'] ?: '#6956E8')?>, <?= esc($b['warna_sampul'] ?: '#6956E8')?>)"><span class="absolute left-0 top-0 bottom-0 w-[5px] bg-black/15"></span><span class="text-[32px] mb-auto"><?= esc($b['ikon'] ?: '📚')?></span><span class="font-display font-bold text-xs leading-snug"><?= esc($b['judul'])?></span><span class="text-[10px] text-white/85"><?= esc($b['genre'])?> · <?= (int) $b['jumlah_halaman']?> hlm</span></div>
+      <div class="h-[138px] rounded-2xl p-3 text-white flex flex-col shadow-md relative overflow-hidden" style="background: linear-gradient(160deg, <?= esc($b['warna_sampul'] ?: '#6956E8')?>, <?= esc($b['warna_sampul'] ?: '#6956E8')?>)"><span class="absolute left-0 top-0 bottom-0 w-[5px] bg-black/15"></span><span class="text-[32px] mb-auto"><?= esc($b['ikon'] ?: '📚')?></span><span class="font-display font-bold text-xs leading-snug"><?= esc($b['judul'])?></span><span class="text-[10px] text-white/85"><?= esc($b['genre'])?> · <?= (int) $b['jumlah_halaman']?> hlm</span><?php if (! empty($b['sampul_url'])):?><img src="<?= esc($b['sampul_url'])?>" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'"><?php endif;?></div>
       <p class="font-bold text-xs mt-2 leading-snug line-clamp-2"><?= esc($b['judul'])?></p><p class="text-[11px] text-muted"><?= esc($b['penulis'])?></p>
     </a>
     <?php endforeach; ?>
@@ -48,7 +48,7 @@
   <div class="flex items-center justify-between mt-6 mb-3"><h2 class="font-display font-bold text-[17px]">Koleksi Sering Dibaca</h2><a href="<?= base_url('siswa/peringkat')?>" class="text-primary text-xs font-bold">Peringkat</a></div>
   <div class="space-y-2.5">
     <?php foreach ($seringDibaca as $i => $s): ?>
-    <div class="flex items-center gap-3 bg-white border border-[#F2EEF8] rounded-2xl p-2.5 shadow-soft"><span class="w-10 h-[52px] rounded-[10px] grid place-items-center text-xl flex-none" style="background: <?= esc($s['warna'] ?: '#F1EEFF')?>33"><?= esc($s['ikon'] ?: '📚')?></span><div class="flex-1 min-w-0"><p class="font-display font-bold text-[13px] truncate"><?= esc($s['judul_buku'])?></p><p class="text-[11px] text-muted"><?= esc($s['penulis'] ?? 'BacaYuk')?> · dibaca <?= (int) $s['dibaca']?>×</p></div><span class="font-display font-extrabold text-[#C3BEE0] text-sm">#<?= $i + 1?></span></div>
+    <div class="flex items-center gap-3 bg-white border border-[#F2EEF8] rounded-2xl p-2.5 shadow-soft"><span class="relative overflow-hidden w-10 h-[52px] rounded-[10px] grid place-items-center text-xl flex-none" style="background: <?= esc($s['warna'] ?: '#F1EEFF')?>33"><?= esc($s['ikon'] ?: '📚')?><?php if (! empty($s['sampul_url'])):?><img src="<?= esc($s['sampul_url'])?>" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'"><?php endif;?></span><div class="flex-1 min-w-0"><p class="font-display font-bold text-[13px] truncate"><?= esc($s['judul_buku'])?></p><p class="text-[11px] text-muted"><?= esc($s['penulis'] ?? 'BacaYuk')?> · dibaca <?= (int) $s['dibaca']?>×</p></div><span class="font-display font-extrabold text-[#C3BEE0] text-sm">#<?= $i + 1?></span></div>
     <?php endforeach; ?>
   </div>
   <?php endif; ?>

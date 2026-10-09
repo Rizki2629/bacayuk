@@ -9,6 +9,7 @@ $routes->get('/', 'Auth::index');            // redirect sesuai sesi / ke login
 $routes->get('login', 'Auth::login');
 $routes->post('login', 'Auth::doLogin');
 $routes->get('logout', 'Auth::logout');
+$routes->get('impor-sampul', 'ImporSampul::index'); // SEMENTARA: dihapus setelah impor sampul live
 
 // ---------- Siswa ----------
 $routes->group('siswa', ['filter' => 'role:siswa'], static function ($routes) {

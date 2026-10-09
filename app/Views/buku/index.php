@@ -14,7 +14,7 @@
       <?php if ($buku === []):?><tr><td colspan="6" class="text-center font-semibold text-muted py-8"><img src="<?= base_url('assets/3d/kosong.jpg')?>" alt="" class="h-20 mx-auto mb-2">Katalog masih kosong.</td></tr><?php endif;?>
       <?php foreach ($buku as $b):?>
         <tr>
-          <td><span class="w-10 h-12 rounded-md grid place-items-center text-xl shadow" style="background: <?= esc($b['warna_sampul'])?>"><?= esc($b['ikon']?: '')?></span></td>
+          <td><span class="relative overflow-hidden w-10 h-[52px] rounded-md grid place-items-center text-xl shadow" style="background: <?= esc($b['warna_sampul'])?>"><?= esc($b['ikon']?: '')?><?php if (! empty($b['sampul_url'])):?><img src="<?= esc($b['sampul_url'])?>" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'"><?php endif;?></span></td>
           <td class="font-bold"><?= esc($b['judul'])?></td>
           <td class="font-semibold"><?= esc($b['penulis'])?></td>
           <td><span class="badge bg-bacayuk-soft text-bacayuk border-0 font-bold"><?= esc($b['genre'])?></span></td>
