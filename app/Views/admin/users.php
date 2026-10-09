@@ -19,9 +19,9 @@
           <td class="font-semibold"><?= esc($u['nama_kelas']?? '—')?></td>
           <td><?= (int) $u['is_active'] === 1? '<span class="badge bg-mint text-[#2A816F] border-0 font-bold rounded-full px-3">aktif</span>': '<span class="badge bg-[#F1EFF7] text-[#817D92] border-0 font-bold rounded-full px-3">nonaktif</span>'?></td>
           <td><div class="flex justify-end gap-2">
-            <a href="<?= base_url('admin/users/edit/'. $u['id'])?>" class="btn btn-sm bg-skyy/20 hover:bg-skyy/40 border-0 rounded-xl font-display"></a>
+            <a href="<?= base_url('admin/users/edit/'. $u['id'])?>" class="btn btn-sm bg-skyy/20 hover:bg-skyy/40 border-0 rounded-xl font-display font-bold text-[#2B5EA7] text-xs">Ubah</a>
             <form method="post" action="<?= base_url('admin/users/hapus/'. $u['id'])?>" onsubmit="return confirm('Hapus user ini? Jurnalnya ikut terhapus.')">
-              <?= csrf_field()?><button class="btn btn-sm bg-pinky/20 hover:bg-pinky/40 border-0 rounded-xl font-display"></button>
+              <?= csrf_field()?><button class="btn btn-sm bg-pinky/20 hover:bg-pinky/40 border-0 rounded-xl font-display font-bold text-[#A23C56] text-xs">Hapus</button>
             </form>
           </div></td>
         </tr>

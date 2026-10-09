@@ -24,7 +24,7 @@
           <td><?= (int) $j['durasi_menit']?></td>
           <td class="text-amber-500"><?= str_repeat('★', (int) $j['rating'])?></td>
           <td><?php $b = ['menunggu' => 'bg-[#FFF1D7] text-[#A36C17]', 'terverifikasi' => 'bg-mint text-[#2A816F]', 'revisi' => 'bg-[#FFE7EC] text-[#A23C56]'][$j['status']];?>
-            <span class="badge <?= $b?> text-white border-0 font-bold"><?= esc($j['status'])?></span></td>
+            <span class="badge <?= $b?> border-0 font-bold"><?= esc($j['status'])?></span></td>
         </tr>
       <?php endforeach;?>
       </tbody>

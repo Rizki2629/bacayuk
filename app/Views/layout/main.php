@@ -24,7 +24,7 @@ tailwind.config = { theme: { extend: {
 .fade-in{animation:fadeIn .45s ease both}
 .shadow-kartu{box-shadow:0 10px 35px rgba(57,45,112,.07)}
 .font-kartun{font-family:'Baloo 2',ui-rounded,system-ui;letter-spacing:.01em}
-.plakat{background:#FFF6E3;border:2px solid #F0DDB8;border-radius:20px;box-shadow:0 10px 24px rgba(41,37,61,.10)}
+.plakat{background:#FFF6E3;border:2px solid #F0DDB8;border-radius:20px;box-shadow:0 10px 24px rgba(41,37,61,.10);padding:20px 24px}
 .bingkai-adegan{position:relative;overflow:hidden}
 .card{border:1px solid #F2EEF8}
 ::selection{background:#6956E8;color:#fff}

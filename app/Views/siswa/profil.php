@@ -56,7 +56,7 @@ $menuSaya  = [
   <h2 class="font-display font-bold text-[17px] mt-7 mb-4">Lencana Terbaruku</h2>
   <div class="flex gap-4 overflow-x-auto pb-1">
     <?php foreach (array_slice($lencana, -6) as $l): ?>
-    <div class="flex-none text-center"><span class="w-14 h-14 rounded-2xl bg-[#FFF2CF] border border-[#FFE29A] grid place-items-center text-[26px]"><?= esc($l['ikon'])?></span><p class="text-[10px] font-bold text-muted mt-1.5 w-14 truncate"><?= esc($l['nama'])?></p></div>
+    <div class="flex-none text-center"><span class="w-14 h-14 rounded-2xl bg-[#FFF2CF] border border-[#FFE29A] grid place-items-center text-[26px]"><?= esc($l['ikon'])?></span><p class="text-[10px] font-bold text-muted mt-1.5 w-16 leading-tight line-clamp-2"><?= esc($l['nama'])?></p></div>
     <?php endforeach; ?>
   </div>
   <?php endif; ?>
