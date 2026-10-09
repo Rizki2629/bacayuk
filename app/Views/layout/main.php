@@ -56,20 +56,34 @@ $uriNow='/'.trim(uri_string(),'/');$namaUser=(string)(session()->get('nama')??''
 <div class="hidden lg:block"><p class="text-xs text-muted font-semibold uppercase tracking-[.14em]">Ruang belajar</p><p class="font-display font-bold text-lg"><?= esc($judul??'Dashboard')?></p></div>
 <div class="flex items-center gap-3"><div class="hidden sm:block text-right"><p class="font-display font-bold text-sm"><?= esc($namaUser)?></p><p class="text-xs text-muted capitalize"><?= esc($role??'siswa')?></p></div><div class="w-10 h-10 rounded-2xl bg-primary text-white grid place-items-center font-display font-bold shadow-sm"><?= esc($inisial)?></div></div>
 </header>
-<main class="w-full max-w-[1380px] mx-auto px-5 sm:px-8 py-7 fade-in<?= session()->get('role') === 'siswa' ? ' pb-28 lg:pb-10' : '' ?>">
+<main class="w-full max-w-[1380px] mx-auto px-5 sm:px-8 py-7 fade-in<?= session()->get('role') ? ' pb-28 lg:pb-10' : '' ?>">
 <?php if(session()->getFlashdata('success')):?><div class="alert bg-mint border-0 text-[#247A68] shadow-sm mb-5 rounded-2xl font-semibold"><span>✓</span><span><?= esc(session()->getFlashdata('success'))?></span></div><?php endif;?>
 <?php if(session()->getFlashdata('error')):?><div class="alert bg-[#FFE7EC] border-0 text-[#A23C56] shadow-sm mb-5 rounded-2xl font-semibold"><span>!</span><span><?= esc(session()->getFlashdata('error'))?></span></div><?php endif;?>
 <?php if(session()->getFlashdata('errors')):?><div class="alert bg-[#FFF1D7] border-0 text-[#9A681B] shadow-sm mb-5 rounded-2xl"><ul class="list-disc ml-5 font-semibold"><?php foreach((array)session()->getFlashdata('errors') as $e):?><li><?= esc($e)?></li><?php endforeach;?></ul></div><?php endif;?>
 <?= $this->renderSection('content')?><footer class="text-center text-xs text-[#AAA5B8] mt-12 mb-2">BacaYuk · Tumbuhkan kebiasaan membaca setiap hari</footer>
 </main>
-<?php if (session()->get('role') === 'siswa'): $navAktif = static fn (string $u): string => $uriNow === $u ? 'text-primary' : 'text-[#A79FC0]'; ?>
+<?php $peranNav = (string) session()->get('role'); $navIkon = [
+'beranda' => '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
+'periksa' => '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-5"/></svg>',
+'jurnal' => '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h13v18H6.5A2.5 2.5 0 0 1 4 18.5v-13A2.5 2.5 0 0 1 6 3Z"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H19M8.5 8h7M8.5 11.5h5"/></svg>',
+'users' => '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3.5 20c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.6"/><path d="M16.5 15.2c2.3.3 3.6 1.9 4 4.3"/></svg>',
+'kelas' => '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8.5L12 4l7 4.5V21M9.5 21v-4.5h5V21M12 8v2"/></svg>',
+'buku' => '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>',
+'chart' => '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16M8 16v-5M12 16V8M16 16v-8"/></svg>',
+'award' => '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>',
+'profil' => '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>'];
+$navSet = [
+'siswa' => [['/siswa', 'beranda', 'Beranda'], ['/siswa/buku', 'buku', 'Katalog'], 'FAB', ['/siswa/lencana', 'award', 'Lencana'], ['/siswa/profil', 'profil', 'Profil']],
+'guru' => [['/guru', 'beranda', 'Beranda'], ['/guru/verifikasi', 'periksa', 'Verifikasi'], ['/guru/jurnal', 'jurnal', 'Jurnal'], ['/guru/siswa', 'users', 'Siswa'], ['/guru/peringkat', 'chart', 'Peringkat']],
+'admin' => [['/admin', 'beranda', 'Beranda'], ['/admin/users', 'users', 'Pengguna'], ['/admin/kelas', 'kelas', 'Kelas'], ['/buku', 'buku', 'Buku'], ['/admin/jurnal', 'jurnal', 'Jurnal']]];
+if (isset($navSet[$peranNav])): ?>
 <nav class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-[#EEEAF6] lg:hidden" style="padding-bottom: env(safe-area-inset-bottom)">
 <div class="flex items-end px-2 pt-2 pb-2">
-<a href="<?= base_url('siswa')?>" class="flex-1 flex flex-col items-center gap-0.5 text-[10px] font-bold <?= $navAktif('/siswa')?>"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Beranda</a>
-<a href="<?= base_url('siswa/buku')?>" class="flex-1 flex flex-col items-center gap-0.5 text-[10px] font-bold <?= $navAktif('/siswa/buku')?>"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>Katalog</a>
+<?php foreach ($navSet[$peranNav] as $item): if ($item === 'FAB'): ?>
 <a href="<?= base_url('siswa/jurnal/baru')?>" class="flex-none w-[52px] h-[52px] -mt-7 rounded-full bg-primary text-white grid place-items-center shadow-lg shadow-primary/40 border-4 border-[#FBFAFF]" aria-label="Tulis jurnal baru"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></a>
-<a href="<?= base_url('siswa/lencana')?>" class="flex-1 flex flex-col items-center gap-0.5 text-[10px] font-bold <?= $navAktif('/siswa/lencana')?>"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>Lencana</a>
-<a href="<?= base_url('siswa/profil')?>" class="flex-1 flex flex-col items-center gap-0.5 text-[10px] font-bold <?= $navAktif('/siswa/profil')?>"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>Profil</a>
+<?php else: [$uNav, $iNav, $lNav] = $item; $navOn = $uriNow === $uNav || (! in_array($uNav, ['/siswa', '/guru', '/admin'], true) && str_starts_with($uriNow, $uNav . '/')); ?>
+<a href="<?= base_url(ltrim($uNav, '/'))?>" class="flex-1 flex flex-col items-center gap-0.5 text-[10px] font-bold <?= $navOn ? 'text-primary' : 'text-[#A79FC0]'?>"><?= $navIkon[$iNav]?><?= $lNav?></a>
+<?php endif; endforeach; ?>
 </div></nav>
 <?php endif; ?>
 </div>

@@ -1,5 +1,30 @@
 <?= $this->extend('layout/main')?>
 <?= $this->section('content')?>
+<!-- ===== BERANDA MOBILE ADMIN ===== -->
+<div class="lg:hidden">
+  <div class="relative overflow-hidden rounded-[26px] bg-gradient-to-br from-primary to-primary-dark text-white p-5 shadow-float">
+    <div class="absolute -right-8 -top-12 w-40 h-40 rounded-full bg-white/10"></div>
+    <div class="relative z-10">
+      <p class="text-white/75 text-[13px] font-semibold">Panel pengelola</p>
+      <h1 class="font-display font-extrabold text-[22px] leading-tight">Hai, Admin! 👋</h1>
+      <p class="text-white/75 text-[13px] mt-1">Ringkasan seluruh aktivitas membaca di sekolah.</p>
+      <div class="grid grid-cols-4 gap-2.5 mt-4">
+        <?php foreach ([[$ringkas['users'], 'User'], [$ringkas['siswa'], 'Siswa'], [$ringkas['buku'], 'Buku'], [$ringkas['jurnal'], 'Jurnal']] as [$n, $lb]):?>
+        <div class="bg-white/12 rounded-2xl py-3 text-center"><p class="font-display font-extrabold text-lg leading-none"><?= (int) $n?></p><p class="text-[10px] font-bold text-white/75 mt-1.5"><?= $lb?></p></div>
+        <?php endforeach;?>
+      </div>
+      <?php if (($ringkas['menunggu'] ?? 0) > 0):?><a href="<?= base_url('admin/jurnal')?>" class="btn w-full mt-4 bg-white text-primary hover:bg-white/90 border-0 rounded-2xl normal-case font-display font-bold">Ada <?= (int) $ringkas['menunggu']?> jurnal menunggu verifikasi</a><?php endif;?>
+    </div>
+  </div>
+  <h2 class="font-display font-extrabold text-[15px] mt-6 mb-3">Aksi Cepat</h2>
+  <div class="grid grid-cols-3 gap-2.5">
+    <a href="<?= base_url('admin/users/baru')?>" class="bg-white border border-[#F2EEF8] rounded-2xl shadow-soft py-4 text-center"><span class="text-[22px] block">👤</span><span class="text-xs font-bold">Tambah User</span></a>
+    <a href="<?= base_url('admin/kelas/baru')?>" class="bg-white border border-[#F2EEF8] rounded-2xl shadow-soft py-4 text-center"><span class="text-[22px] block">🏫</span><span class="text-xs font-bold">Tambah Kelas</span></a>
+    <a href="<?= base_url('buku/baru')?>" class="bg-white border border-[#F2EEF8] rounded-2xl shadow-soft py-4 text-center"><span class="text-[22px] block">📚</span><span class="text-xs font-bold">Tambah Buku</span></a>
+  </div>
+</div>
+<!-- ===== AKHIR BERANDA MOBILE ADMIN ===== -->
+<div class="hidden lg:block">
 
 <h1 class="font-display font-extrabold text-3xl">Halo, Admin! </h1>
 <p class="text-muted font-semibold mt-1">Ringkasan seluruh aktivitas membaca di sekolah.</p>
@@ -43,5 +68,6 @@
       <?php if ($aktivitas === []):?><li class="py-2 font-semibold text-muted">Belum ada aktivitas.</li><?php endif;?>
     </ul>
   </div></div>
+</div>
 </div>
 <?= $this->endSection()?>

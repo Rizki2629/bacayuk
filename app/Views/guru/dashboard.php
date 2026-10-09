@@ -1,5 +1,32 @@
 <?= $this->extend('layout/main')?>
 <?= $this->section('content')?>
+<!-- ===== BERANDA MOBILE GURU ===== -->
+<div class="lg:hidden">
+  <div class="relative overflow-hidden rounded-[26px] bg-gradient-to-br from-primary to-primary-dark text-white p-5 shadow-float">
+    <div class="absolute -right-8 -top-12 w-40 h-40 rounded-full bg-white/10"></div>
+    <div class="relative z-10">
+      <p class="text-white/75 text-[13px] font-semibold">Selamat datang kembali</p>
+      <h1 class="font-display font-extrabold text-[22px] leading-tight">Hai, <?= esc(session()->get('nama'))?>! 👋</h1>
+      <p class="text-white/75 text-[13px] mt-1">Pantau aktivitas membaca anak-anak kelasmu hari ini.</p>
+      <div class="grid grid-cols-3 gap-2.5 mt-4">
+        <div class="bg-white/12 rounded-2xl py-3 text-center"><p class="font-display font-extrabold text-lg leading-none"><?= (int) ($ringkas['siswa'] ?? 0)?></p><p class="text-[10px] font-bold text-white/75 mt-1.5">Siswa</p></div>
+        <div class="bg-white/12 rounded-2xl py-3 text-center"><p class="font-display font-extrabold text-lg leading-none"><?= (int) ($ringkas['jurnal_minggu'] ?? 0)?></p><p class="text-[10px] font-bold text-white/75 mt-1.5">Jurnal 7 Hari</p></div>
+        <div class="bg-white/12 rounded-2xl py-3 text-center"><p class="font-display font-extrabold text-lg leading-none"><?= (int) ($ringkas['menunggu'] ?? 0)?></p><p class="text-[10px] font-bold text-white/75 mt-1.5">Menunggu</p></div>
+      </div>
+      <?php if (($ringkas['menunggu'] ?? 0) > 0):?><a href="<?= base_url('guru/verifikasi')?>" class="btn w-full mt-4 bg-white text-primary hover:bg-white/90 border-0 rounded-2xl normal-case font-display font-bold">Periksa <?= (int) $ringkas['menunggu']?> jurnal menunggu</a><?php endif;?>
+    </div>
+  </div>
+  <?php if (! empty($menunggu)):?>
+  <div class="flex items-center justify-between mt-6 mb-3"><h2 class="font-display font-extrabold text-[15px]">Antrean Verifikasi</h2><a href="<?= base_url('guru/verifikasi')?>" class="text-primary text-xs font-bold">Lihat Semua</a></div>
+  <div class="bg-white border border-[#F2EEF8] rounded-[22px] shadow-soft divide-y divide-[#F3F0F7] px-4">
+    <?php foreach (array_slice($menunggu, 0, 3) as $j):?>
+    <div class="py-3.5 flex items-center gap-3"><span class="text-[26px]"><?= esc($j['avatar'])?></span><div class="flex-1 min-w-0"><p class="font-display font-bold text-[13px] truncate"><?= esc($j['nama_siswa'])?> — <?= esc($j['judul_buku'])?></p><p class="text-[11px] text-muted mt-0.5"><?= date('d M Y', strtotime($j['tanggal']))?> · <?= (int) $j['durasi_menit']?> menit</p></div><a href="<?= base_url('guru/verifikasi')?>" class="flex-none rounded-full bg-[#FFF1D7] text-[#A36C17] px-3 py-1.5 text-[11px] font-bold">Periksa</a></div>
+    <?php endforeach;?>
+  </div>
+  <?php endif;?>
+</div>
+<!-- ===== AKHIR BERANDA MOBILE GURU ===== -->
+<div class="hidden lg:block">
 
 <div class="flex items-center justify-between gap-4">
   <div>
@@ -67,6 +94,7 @@
 </div></div>
 <?php endif;?>
 
+</div>
 <?= $this->endSection()?>
 
 <?= $this->section('scripts')?>
