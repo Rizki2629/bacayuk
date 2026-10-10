@@ -20,7 +20,7 @@
           <td><span class="badge bg-bacayuk-soft text-bacayuk border-0 font-bold"><?= esc($b['genre'])?></span></td>
           <td class="font-semibold"><?= (int) $b['jumlah_halaman']?></td>
           <td><div class="flex justify-end gap-2">
-            <a href="<?= base_url('buku/edit/'. $b['id'])?>" class="btn btn-sm bg-skyy/20 hover:bg-skyy/40 border-0 rounded-xl font-display font-bold text-[#2B5EA7] text-xs">Ubah</a>
+            <?php if (! empty($b['tautan_pdf']) && ! str_contains($b['tautan_pdf'], 'letsreadasia')):?><a href="<?= base_url('buku/baca/'. $b['id'])?>" class="btn btn-sm bg-primary/15 hover:bg-primary/30 border-0 rounded-xl font-display font-bold text-primary text-xs">Baca</a><?php endif;?> <a href="<?= base_url('buku/edit/'. $b['id'])?>" class="btn btn-sm bg-skyy/20 hover:bg-skyy/40 border-0 rounded-xl font-display font-bold text-[#2B5EA7] text-xs">Ubah</a>
             <form method="post" action="<?= base_url('buku/hapus/'. $b['id'])?>" onsubmit="return confirm('Hapus buku ini dari katalog?')">
               <?= csrf_field()?><button class="btn btn-sm bg-pinky/20 hover:bg-pinky/40 border-0 rounded-xl font-display font-bold text-[#A23C56] text-xs">Hapus</button>
             </form>

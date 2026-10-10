@@ -14,7 +14,7 @@
       <select name="buku_id" id="pilih-buku" class="select select-bordered h-12 rounded-2xl border-[#E4DFEE] bg-[#FCFAFF]">
         <option value="">— Tulis judul sendiri di bawah —</option>
         <?php foreach ($buku as $b):?>
-          <option value="<?= $b['id']?>" data-judul="<?= esc($b['judul'])?>" <?= (string) old('buku_id', $j['buku_id']?? '') === (string) $b['id']? 'selected': ''?>>
+          <option value="<?= $b['id']?>" data-judul="<?= esc($b['judul'])?>" <?= ((string) old('buku_id', $j['buku_id']?? '') === (string) $b['id'] || (isset($praterpilih) && $praterpilih === (int) $b['id'])) ? 'selected': ''?>>
             <?= esc($b['judul'])?> — <?= esc($b['penulis'])?>
           </option>
         <?php endforeach;?>

@@ -20,6 +20,7 @@ $routes->group('siswa', ['filter' => 'role:siswa'], static function ($routes) {
     $routes->post('jurnal/update/(:num)', 'Siswa::jurnalUpdate/$1');
     $routes->post('jurnal/hapus/(:num)', 'Siswa::jurnalHapus/$1');
     $routes->get('buku', 'Siswa::buku');
+    $routes->get('baca/(:num)', 'Baca::index/$1');
     $routes->get('lencana', 'Siswa::lencana');
     $routes->get('peringkat', 'Siswa::peringkat');
     $routes->get('profil', 'Siswa::profil');
@@ -32,12 +33,14 @@ $routes->group('guru', ['filter' => 'role:guru'], static function ($routes) {
     $routes->post('verifikasi/(:num)', 'Guru::verifikasiSimpan/$1');
     $routes->get('jurnal', 'Guru::semuaJurnal');
     $routes->get('siswa', 'Guru::siswa');
+    $routes->get('baca/(:num)', 'Baca::index/$1');
     $routes->get('peringkat', 'Guru::peringkat');
 });
 
 // ---------- Katalog Buku (guru & admin) ----------
 $routes->group('buku', ['filter' => 'role:guru,admin'], static function ($routes) {
     $routes->get('/', 'Buku::index');
+    $routes->get('baca/(:num)', 'Baca::index/$1');
     $routes->get('baru', 'Buku::baru');
     $routes->post('/', 'Buku::simpan');
     $routes->get('edit/(:num)', 'Buku::edit/$1');

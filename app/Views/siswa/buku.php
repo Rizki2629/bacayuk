@@ -37,7 +37,7 @@
         <span class="badge badge-sm bg-bacayuk-soft text-bacayuk border-0 font-bold"><?= esc($b['genre'])?></span>
         <h3 class="font-display font-bold text-[15px] leading-snug"><?= esc($b['judul'])?></h3>
         <p class="text-sm text-muted font-semibold"> <?= esc($b['penulis'])?> • <?= (int) $b['jumlah_halaman']?> halaman</p>
-        <?php if (! empty($b['tautan_pdf'])):?><a href="<?= esc($b['tautan_pdf'])?>" target="_blank" rel="noopener" class="btn btn-sm bg-primary hover:bg-primary-dark text-white border-0 rounded-xl font-display mt-1"><?= str_contains($b['tautan_pdf'], 'letsreadasia') ? 'Baca Online' : 'Baca PDF'?></a><?php endif;?>
+        <?php if (! empty($b['tautan_pdf'])):?><?php if (str_contains($b['tautan_pdf'], 'letsreadasia')):?><a href="<?= esc($b['tautan_pdf'])?>" target="_blank" rel="noopener" class="btn btn-sm bg-primary hover:bg-primary-dark text-white border-0 rounded-xl font-display mt-1">Baca Online</a><?php else:?><a href="<?= base_url('siswa/baca/' . $b['id'])?>" class="btn btn-sm bg-primary hover:bg-primary-dark text-white border-0 rounded-xl font-display mt-1">Baca Buku</a><?php endif;?><?php endif;?>
         <a href="<?= base_url('siswa/jurnal/baru')?>" class="btn btn-sm bg-mustard hover:brightness-95 text-ink border-0 rounded-xl font-display mt-1">Mulai Membaca </a>
       </div>
     </div>

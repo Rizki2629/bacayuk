@@ -83,6 +83,7 @@ class Siswa extends BaseController
             'judul' => 'Isi Jurnal Baru',
             'buku'  => model(BukuModel::class)->orderBy('judul', 'ASC')->findAll(),
             'jurnal' => null,
+            'praterpilih' => (int) $this->request->getGet('buku_id'),
         ]);
     }
 
