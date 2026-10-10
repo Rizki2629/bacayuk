@@ -6,16 +6,16 @@
 <section class="relative m-2.5 mb-0 flex items-end justify-between gap-2.5 overflow-hidden rounded-[22px] bg-[#F1EEFF] px-[18px] pt-[18px] sm:m-3 sm:mb-0 lg:m-3.5 lg:mb-3.5 lg:flex-col lg:items-stretch lg:justify-start lg:rounded-[28px] lg:px-[30px] lg:pt-[34px]">
 <div class="pb-[18px] lg:pb-0">
 <div class="flex items-center gap-2.5 font-display text-base font-extrabold text-[#6554E8] lg:text-[17px]"><div class="grid size-[34px] place-items-center rounded-[11px] bg-[#6554E8] text-white lg:size-[38px] lg:rounded-xl"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.8-1.6-4-2-8-2v14c4 0 6.2.4 8 2 1.8-1.6 4-2 8-2V4c-4 0-6.2.4-8 2Z"/><path d="M12 6v14"/></svg></div>BacaYuk</div>
-<h1 class="font-kartun mt-3 text-[23px] font-bold leading-[1.15] lg:mt-[26px] lg:text-[40px] lg:leading-[1.08]">Halo, Pembaca <span class="text-[#6554E8]">Cilik!</span></h1>
+<h1 class="font-kartun mt-3 text-[clamp(23px,6.4vw,31px)] font-bold leading-[1.15] lg:mt-[26px] lg:text-[40px] lg:leading-[1.08]">Halo, Pembaca <span class="text-[#6554E8]">Cilik!</span></h1>
 <p class="mt-1.5 text-xs leading-relaxed text-[#6F6A7D] lg:hidden">Ayo masuk, ceritamu menunggu.</p>
 <p class="mt-3 hidden max-w-[340px] text-[14.5px] leading-relaxed text-[#6F6A7D] lg:block">Setiap hari satu cerita. Masuk dan lanjutkan petualangan membacamu — bukumu sudah menunggu!</p>
 <div class="mt-5 hidden flex-wrap gap-2 lg:flex"><span class="flex items-center gap-1.5 rounded-full bg-white px-3 py-2 text-xs font-bold shadow-[0_4px_12px_rgba(101,84,232,.10)]">📚 620 Buku</span><span class="flex items-center gap-1.5 rounded-full bg-white px-3 py-2 text-xs font-bold shadow-[0_4px_12px_rgba(101,84,232,.10)]">📖 Jurnal Harian</span><span class="flex items-center gap-1.5 rounded-full bg-white px-3 py-2 text-xs font-bold shadow-[0_4px_12px_rgba(101,84,232,.10)]">🏅 Lencana Seru</span></div>
 </div>
-<img src="<?= base_url('assets/3d/baca-anak-potong.png')?>" alt="Anak sedang membaca buku" class="block w-[104px] shrink-0 drop-shadow-[0_18px_18px_rgba(70,51,184,.22)] lg:mx-auto lg:mt-auto lg:w-[330px] lg:max-w-[80%]">
+<img src="<?= base_url('assets/3d/baca-anak-potong.png')?>" alt="Anak sedang membaca buku" class="block w-[clamp(96px,27vw,148px)] shrink-0 drop-shadow-[0_18px_18px_rgba(70,51,184,.22)] lg:mx-auto lg:mt-auto lg:w-[330px] lg:max-w-[80%]">
 </section>
 <main class="flex flex-1 flex-col justify-center px-5 pb-[30px] pt-[22px] lg:p-[44px_46px_40px]">
 <p class="text-[12.5px] font-bold uppercase tracking-[0.06em] text-[#6554E8]">Selamat datang kembali 👋</p>
-<h2 class="font-kartun mt-1.5 text-[27px] font-bold leading-tight lg:text-[32px]">Masuk ke ruangmu</h2>
+<h2 class="font-kartun mt-1.5 text-[clamp(26px,7.2vw,32px)] font-bold leading-tight lg:text-[32px]">Masuk ke ruangmu</h2>
 <p class="mt-2 text-sm leading-relaxed text-[#6F6A7D]">Pakai akun yang diberikan gurumu untuk mulai membaca.</p>
 <form method="post" action="<?= base_url('login')?>" class="mt-[22px] space-y-4"><?= csrf_field()?>
 <?php if(session()->getFlashdata('error')):?><div class="rounded-xl bg-[#FFE7EC] px-4 py-3 text-sm font-semibold text-[#A23C56]"><?= esc(session()->getFlashdata('error'))?></div><?php endif;?>
