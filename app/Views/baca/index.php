@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><title>Baca: <?= esc($buku['judul'])?> — BacaYuk</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"><script src="<?= base_url('assets/js/tailwind-play.js')?>"></script><style>*{box-sizing:border-box}body{margin:0;font-family:'DM Sans',sans-serif}.font-display{font-family:'Plus Jakarta Sans',sans-serif}.font-kartun{font-family:'Baloo 2',ui-rounded,system-ui}.putar{width:44px;height:44px;border-radius:50%;border:4px solid rgba(255,255,255,.18);border-top-color:#F5B942;animation:pusing 0.9s linear infinite}@keyframes pusing{to{transform:rotate(360deg)}}.stf__parent{margin:0 auto}.halaman-gambar{background:#fff}</style>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><title>Baca: <?= esc($buku['judul'])?> — BacaYuk</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"><script src="<?= base_url('assets/js/tailwind-play.js')?>"></script><style>*{box-sizing:border-box}body{margin:0;font-family:'DM Sans',sans-serif}.font-display{font-family:'Plus Jakarta Sans',sans-serif}.font-kartun{font-family:'Baloo 2',ui-rounded,system-ui}.putar{width:44px;height:44px;border-radius:50%;border:4px solid rgba(255,255,255,.18);border-top-color:#F5B942;animation:pusing 0.9s linear infinite}@keyframes pusing{to{transform:rotate(360deg)}}.stf__parent{margin:0 auto}.page{background:#fff;overflow:hidden}.page img{width:100%;height:100%;display:block;object-fit:cover;-webkit-user-drag:none;user-select:none}</style>
 <script src="<?= base_url('assets/js/lib/pdf.min.js')?>"></script>
 <script src="<?= base_url('assets/js/lib/page-flip.browser.min.js')?>"></script>
 </head>
@@ -90,8 +90,18 @@ async function muatBuku(){
       gambar.push(webp.startsWith('data:image/webp') ? webp : kanvas.toDataURL('image/jpeg', 0.92));
       aturMuat(55 + Math.round(i / total * 45), 'Menyiapkan halaman ' + i + ' dari ' + total + '…');
     }
-    if (flip) { flip.destroy(); flip = null; $('buku-flip').innerHTML = ''; }
-    flip = new St.PageFlip($('buku-flip'), {
+    const wadah = $('buku-flip');
+    if (flip) { flip.destroy(); flip = null; }
+    wadah.innerHTML = '';
+    for (const g of gambar) {
+      const d = document.createElement('div');
+      d.className = 'page';
+      const im = document.createElement('img');
+      im.src = g; im.alt = 'Halaman buku'; im.draggable = false;
+      d.appendChild(im);
+      wadah.appendChild(d);
+    }
+    flip = new St.PageFlip(wadah, {
       width: lebarH, height: tinggiH, size: 'stretch',
       minWidth: 280, maxWidth: 1700, minHeight: 360, maxHeight: 2400,
       drawShadow: true, flippingTime: 650, usePortrait: true,
@@ -99,7 +109,7 @@ async function muatBuku(){
       showCover: true, mobileScrollSupport: false, swipeDistance: 24,
       clickEventForward: true, useMouseEvents: true, showPageCorners: true, disableFlipByClick: false
     });
-    flip.loadFromImages(gambar);
+    flip.loadFromHTML(wadah.querySelectorAll('.page'));
     flip.on('flip', perbaruiKendali);
     flip.on('changeOrientation', perbaruiKendali);
     flip.on('init', () => { $('memuat').classList.add('hidden'); perbaruiKendali(); });
