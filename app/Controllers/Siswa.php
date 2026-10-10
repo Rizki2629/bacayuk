@@ -45,7 +45,7 @@ class Siswa extends BaseController
             'grafik'      => $this->jurnal->grafik7Hari($id),
             'lanjut'      => $lanjut,
             'lencana'     => model(UserLencanaModel::class)->milikUser($id),
-            'bukuTerbaru' => model(BukuModel::class)->where('jumlah_halaman >', 0)->orderBy('id', 'DESC')->findAll(6),
+            'bukuTerbaru' => model(BukuModel::class)->where("(jumlah_halaman > 0 OR (tautan_pdf IS NOT NULL AND tautan_pdf != ''))", null, false)->orderBy('id', 'DESC')->findAll(6),
             'seringDibaca' => $seringDibaca,
         ]);
     }
@@ -208,7 +208,7 @@ class Siswa extends BaseController
         $genre = $this->request->getGet('genre');
         $q     = trim((string) $this->request->getGet('q'));
         $m     = model(BukuModel::class);
-        $m     = $m->where('jumlah_halaman >', 0); // sembunyikan buku 0 halaman dari siswa
+        $m     = $m->where("(jumlah_halaman > 0 OR (tautan_pdf IS NOT NULL AND tautan_pdf != ''))", null, false); // sembunyikan buku 0 halaman dari siswa, kecuali yang punya tautan baca (mis. Let's Read Asia)
         if ($genre && in_array($genre, BukuModel::GENRE, true)) {
             $m = $m->where('genre', $genre);
         }
