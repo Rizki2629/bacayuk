@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Masuk — BacaYuk</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"><script src="<?= base_url('assets/js/tailwind-play.js')?>"></script><style>*{box-sizing:border-box}body{margin:0;font-family:'DM Sans',sans-serif}.font-display{font-family:'Plus Jakarta Sans',sans-serif}.font-kartun{font-family:'Baloo 2',ui-rounded,system-ui}input{color-scheme:light}</style></head>
 <body class="min-h-dvh w-full overflow-x-hidden text-[#241B4B]" style="background-color:#5847D8;background-image:radial-gradient(rgba(255,255,255,.16) 1.5px,transparent 1.6px);background-size:26px 26px">
-<div class="mx-auto flex min-h-dvh w-full max-w-[1200px] items-start justify-center p-3 sm:p-5 lg:items-center lg:p-8">
-<div class="grid w-full max-w-[430px] overflow-hidden rounded-[28px] bg-white shadow-[0_40px_90px_rgba(24,16,64,.45)] lg:max-w-[1060px] lg:grid-cols-2 lg:rounded-[36px]">
+<div class="mx-auto flex min-h-dvh w-full max-w-[1200px] items-stretch justify-center p-3 sm:p-5 lg:items-center lg:p-8">
+<div class="flex w-full max-w-[430px] flex-col overflow-hidden rounded-[28px] bg-white shadow-[0_40px_90px_rgba(24,16,64,.45)] lg:grid lg:max-w-[1060px] lg:grid-cols-2 lg:rounded-[36px]">
 <section class="relative m-2.5 mb-0 flex items-end justify-between gap-2.5 overflow-hidden rounded-[22px] bg-[#F1EEFF] px-[18px] pt-[18px] sm:m-3 sm:mb-0 lg:m-3.5 lg:mb-3.5 lg:flex-col lg:items-stretch lg:justify-start lg:rounded-[28px] lg:px-[30px] lg:pt-[34px]">
 <div class="pb-[18px] lg:pb-0">
 <div class="flex items-center gap-2.5 font-display text-base font-extrabold text-[#6554E8] lg:text-[17px]"><div class="grid size-[34px] place-items-center rounded-[11px] bg-[#6554E8] text-white lg:size-[38px] lg:rounded-xl"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.8-1.6-4-2-8-2v14c4 0 6.2.4 8 2 1.8-1.6 4-2 8-2V4c-4 0-6.2.4-8 2Z"/><path d="M12 6v14"/></svg></div>BacaYuk</div>
@@ -13,7 +13,7 @@
 </div>
 <img src="<?= base_url('assets/3d/baca-anak-potong.png')?>" alt="Anak sedang membaca buku" class="block w-[104px] shrink-0 drop-shadow-[0_18px_18px_rgba(70,51,184,.22)] lg:mx-auto lg:mt-auto lg:w-[330px] lg:max-w-[80%]">
 </section>
-<main class="flex flex-col justify-center px-5 pb-[30px] pt-[22px] lg:p-[44px_46px_40px]">
+<main class="flex flex-1 flex-col justify-center px-5 pb-[30px] pt-[22px] lg:p-[44px_46px_40px]">
 <p class="text-[12.5px] font-bold uppercase tracking-[0.06em] text-[#6554E8]">Selamat datang kembali 👋</p>
 <h2 class="font-kartun mt-1.5 text-[27px] font-bold leading-tight lg:text-[32px]">Masuk ke ruangmu</h2>
 <p class="mt-2 text-sm leading-relaxed text-[#6F6A7D]">Pakai akun yang diberikan gurumu untuk mulai membaca.</p>
