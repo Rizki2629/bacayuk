@@ -76,17 +76,18 @@ async function muatBuku(){
     const doc = await tugas.promise;
     const total = doc.numPages;
     const gambar = [];
-    let lebarH = 1000, tinggiH = 1414;
+    let lebarH = 1500, tinggiH = 2122;
     for (let i = 1; i <= total; i++){
       const hal = await doc.getPage(i);
       const dasar = hal.getViewport({scale: 1});
-      const skala = Math.min(1000 / dasar.width, 1500 / dasar.height);
+      const skala = Math.min(1500 / dasar.width, 2100 / dasar.height);
       const vp = hal.getViewport({scale: skala});
       if (i === 1){ lebarH = Math.round(vp.width); tinggiH = Math.round(vp.height); }
       const kanvas = document.createElement('canvas');
       kanvas.width = Math.round(vp.width); kanvas.height = Math.round(vp.height);
       await hal.render({canvasContext: kanvas.getContext('2d'), viewport: vp}).promise;
-      gambar.push(kanvas.toDataURL('image/jpeg', 0.85));
+      const webp = kanvas.toDataURL('image/webp', 0.9);
+      gambar.push(webp.startsWith('data:image/webp') ? webp : kanvas.toDataURL('image/jpeg', 0.92));
       aturMuat(55 + Math.round(i / total * 45), 'Menyiapkan halaman ' + i + ' dari ' + total + '…');
     }
     if (flip) { flip.destroy(); flip = null; $('buku-flip').innerHTML = ''; }
