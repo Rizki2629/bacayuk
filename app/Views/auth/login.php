@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Masuk — BacaYuk</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"><script src="<?= base_url('assets/js/tailwind-play.js')?>"></script><style>*{box-sizing:border-box}body{margin:0;font-family:'DM Sans',sans-serif}.font-display{font-family:'Plus Jakarta Sans',sans-serif}input{color-scheme:light}</style></head>
 <body class="min-h-dvh w-full overflow-x-hidden bg-[#FFF9ED] text-[#241B4B]">
-<div class="mx-auto flex min-h-dvh w-full max-w-[1536px] flex-col lg:flex-row">
-<section class="relative flex min-h-[440px] w-full flex-col overflow-hidden bg-[#6554E8] px-6 py-8 sm:min-h-[500px] sm:px-10 sm:py-12 lg:min-h-dvh lg:w-1/2 lg:justify-between lg:px-16 lg:py-16">
+<div class="mx-auto flex w-full max-w-[1536px] flex-col lg:min-h-dvh lg:flex-row">
+<section class="relative flex w-full flex-col overflow-hidden bg-[#6554E8] px-6 pt-8 pb-10 sm:px-10 sm:pt-10 sm:pb-12 lg:min-h-dvh lg:w-1/2 lg:justify-between lg:px-16 lg:py-16">
 <div class="pointer-events-none absolute -right-24 -top-24 hidden size-80 rounded-full bg-violet-400/30 lg:block"></div>
-<div class="pointer-events-none absolute -bottom-28 -left-20 size-72 rounded-full bg-white/10"></div>
-<div class="relative z-10 mx-auto flex w-full max-w-xl flex-1 flex-col">
-<div class="mb-12 flex items-center gap-3 text-lg font-bold text-white sm:mb-16"><div class="grid size-11 place-items-center rounded-xl bg-white text-[#6554E8]"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.8-1.6-4-2-8-2v14c4 0 6.2.4 8 2 1.8-1.6 4-2 8-2V4c-4 0-6.2.4-8 2Z"/><path d="M12 6v14"/></svg></div><span class="font-display text-xl font-extrabold">BacaYuk</span></div>
-<p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-violet-100 sm:text-xs">Ruang tumbuh pembaca kecil</p>
-<h1 class="font-display mt-4 max-w-xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">Satu cerita,<br><span class="mt-2 inline-block rounded-2xl bg-[#FFF9ED] px-4 py-2 text-[#241B4B] sm:px-5 sm:py-2">seribu imajinasi.</span></h1>
+<div class="pointer-events-none absolute -bottom-24 -left-24 hidden size-80 rounded-full bg-violet-400/20 lg:block"></div>
+<div class="relative z-10 mx-auto flex w-full max-w-xl flex-col lg:flex-1">
+<div class="mb-12 flex shrink-0 items-center gap-3 text-lg font-bold text-white sm:mb-16"><div class="grid size-11 place-items-center rounded-xl bg-white text-[#6554E8]"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1.8-1.6-4-2-8-2v14c4 0 6.2.4 8 2 1.8-1.6 4-2 8-2V4c-4 0-6.2.4-8 2Z"/><path d="M12 6v14"/></svg></div><span class="font-display text-xl font-extrabold">BacaYuk</span></div>
+<p class="text-[10px] font-semibold uppercase leading-4 tracking-[0.18em] text-violet-100 sm:text-xs sm:tracking-[0.22em]">Ruang tumbuh pembaca kecil</p>
+<h1 class="font-display mt-4 max-w-full text-[clamp(2.25rem,10vw,3rem)] font-extrabold leading-[1.02] tracking-tight text-white sm:max-w-xl sm:text-5xl lg:text-6xl"><span class="block">Satu cerita,</span><span class="mt-3 block w-fit max-w-full rounded-2xl bg-[#FFF9ED] px-4 py-3 text-[clamp(2rem,9vw,2.75rem)] leading-[0.98] text-[#241B4B] sm:px-5 sm:text-[clamp(2rem,9vw,3.5rem)]">seribu imajinasi.</span></h1>
 <p class="mt-6 hidden max-w-lg text-sm leading-6 text-violet-100 sm:block sm:text-base">Catat perjalanan membaca, rayakan setiap halaman, dan tumbuhkan kebiasaan hebat bersama BacaYuk.</p>
-<img src="<?= base_url('assets/3d/baca-anak-potong.png')?>" alt="Anak sedang membaca buku" class="mx-auto mt-8 w-48 object-contain sm:mt-10 sm:w-60 lg:mt-4 lg:w-[min(30vw,380px)]">
-<p class="mt-5 hidden max-w-xs self-end text-sm leading-6 text-violet-100 lg:block lg:mt-auto">&ldquo;Membaca adalah jendela menuju dunia yang lebih luas.&rdquo;</p>
+<div class="relative z-10 mt-8 flex min-h-[210px] items-end justify-center sm:mt-10 sm:min-h-[280px] lg:mt-4 lg:min-h-0 lg:flex-1">
+<img src="<?= base_url('assets/3d/baca-anak-potong.png')?>" alt="Anak sedang membaca buku" class="relative z-10 block w-[min(70vw,280px)] max-w-full object-contain sm:w-[min(55vw,330px)] lg:w-[min(30vw,380px)]">
+</div>
+<p class="relative z-10 mt-5 hidden max-w-xs self-end text-sm leading-6 text-violet-100 lg:block">&ldquo;Membaca adalah jendela menuju dunia yang lebih luas.&rdquo;</p>
 </div>
 </section>
-<main class="flex w-full items-center justify-center px-5 py-10 sm:px-8 sm:py-14 lg:w-1/2 lg:px-16 lg:py-16">
+<main class="flex w-full flex-col items-center justify-start bg-[#FFF9ED] px-5 pt-10 pb-12 sm:px-8 sm:pt-14 sm:pb-16 lg:w-1/2 lg:justify-center lg:px-16 lg:py-16">
 <div class="w-full max-w-[440px]">
-<div class="mb-7 sm:mb-8"><p class="text-sm font-bold text-[#6554E8]">Selamat datang kembali &#128075;</p><h2 class="font-display mt-2 text-3xl font-extrabold tracking-tight text-[#241B4B] sm:text-4xl">Masuk ke ruangmu</h2><p class="mt-3 text-sm leading-6 text-[#6F6A7D] sm:text-base">Lanjutkan cerita dan lihat progres membaca kamu.</p></div>
-<div class="sm:rounded-2xl sm:bg-white sm:p-7 sm:shadow-[0_14px_40px_rgba(57,42,110,0.08)]">
+<div class="mb-7 sm:mb-8"><p class="text-sm font-bold text-[#6554E8]">Selamat datang kembali &#128075;</p><h2 class="font-display mt-2 text-3xl font-extrabold leading-tight tracking-tight text-[#241B4B] sm:text-4xl">Masuk ke ruangmu</h2><p class="mt-3 text-sm leading-6 text-[#6F6A7D] sm:text-base">Lanjutkan cerita dan lihat progres membaca kamu.</p></div>
+<div class="rounded-2xl bg-white p-5 shadow-[0_14px_40px_rgba(57,42,110,0.08)] sm:p-7">
 <form method="post" action="<?= base_url('login')?>" class="space-y-5"><?= csrf_field()?>
 <?php if(session()->getFlashdata('error')):?><div class="rounded-xl bg-[#FFE7EC] px-4 py-3 text-sm font-semibold text-[#A23C56]"><?= esc(session()->getFlashdata('error'))?></div><?php endif;?>
 <?php if(session()->getFlashdata('success')):?><div class="rounded-xl bg-[#E7F7F2] px-4 py-3 text-sm font-semibold text-[#247A68]"><?= esc(session()->getFlashdata('success'))?></div><?php endif;?>
